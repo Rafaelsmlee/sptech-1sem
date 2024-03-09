@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><pt-br></pt-br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Qual a sua nota na avaliação continuada? <input type="text" id="input_notaContinuada">
+    <br>
+    Qual a sua nota na avaliação semestral? <input type="text" id="input_notaSemestral">
+    <br>
+    Qual o seu nome? <input type="text" id="input_nomeAluno">
+    <br>
+    <button onclick="MediaFinal()">Calcular média</button>
+
+</body>
+</html>
+<script>
+
+    alert(`Olá aluno, não esqueça de usar "." no lugar da "," nas notas!`)
+
+    function MediaFinal(){
+        var nomeAluno = input_nomeAluno.value
+        var notaContinuada = Number(input_notaContinuada.value);
+        var notaSemestral = Number(input_notaSemestral.value);
+        var media = (notaContinuada*0.4)+(notaSemestral*0.6);
+        alert(`Olá ${nomeAluno}, a sua média para esse primeiro semestre na SPTech foi de ${media}`)
+
+    }
+
+</script>

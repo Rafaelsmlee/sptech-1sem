@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Quantas latinhas de refriegerante você bebe por <b>dia</b>? <input type="number" id="input_qtd_refrisUsuario"> <br>
+    <button onclick="exibir_refis()">
+        Quantos refris?
+    </button>
+    <p id="resultado_refris"></p>
+</body>
+</html>
+<script>
+    function exibir_refis(){
+        var qtd_latinhas = Number(input_qtd_refrisUsuario.value);
+        var calculo_refris = qtd_latinhas * 365
+
+        if (calculo_refris < 500){
+        resultado_refris.innerHTML = ` Você está consumindo ${calculo_refris} por ano!
+        `
+        }
+        if (calculo_refris >= 500){
+            resultado_refris.innerHTML = ` Você está consumindo ${calculo_refris} por ano! <br>
+            Cuidado com diabetes!`
+        }
+    }
+
+</script>

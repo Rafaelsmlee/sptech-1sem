@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Qual o seu "ki base"?
+    <input type="number" id="input_ki_base"> <br> <br>
+
+    <button onclick="transformar_ssj()">
+    Transformar em SSJ
+    </button>
+    <button onclick="transformar_ssj2()">
+    Transformar em SSJ2
+    </button>
+    <button onclick="transfomar_ssj3()">
+    Transformar em SSJ3
+    </button>
+
+<p id="ver_poder_luta_novo">
+
+</p>
+    
+</body>
+</html>
+<script>
+
+    function transformar_ssj(){
+    var ki_base = Number(input_ki_base.value);
+    var ssj = ki_base*50;
+    ver_poder_luta_novo.innerHTML = ` O seu poder de luta como SSJ é de ${ssj}`
+
+}
+
+    function transformar_ssj2(){
+        var ki_base = Number(input_ki_base.value);
+        var ssj2 = ki_base*100;
+        ver_poder_luta_novo.innerHTML = `O seu poder de luta como SSJ2 é de ${ssj2}`
+}
+    
+    function transfomar_ssj3(){
+        var ki_base = Number(input_ki_base.value);
+        var ssj3 = ki_base*200;
+        ver_poder_luta_novo.innerHTML = `O seu poder de luta como SSJ3 é de ${ssj3}`
+
+    }
+    
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Qual a frequencia do aluno? <input id="input_frequencia_aluno"> <br>
+    <button onclick="mostrarFrequencia()">
+        Analisar frequência
+    </button><br><br>
+    <div id="img_aluno"></div>
+</body>
+
+</html>
+<script>
+
+    function mostrarFrequencia() {
+        var frequenciaAluno = Number(input_frequencia_aluno.value);
+
+        if (frequenciaAluno < 50) {
+            img_aluno.innerHTML = `<span> <img src='https://img.freepik.com/fotos-gratis/animado-apressado-jovem-turista-com-bagagem-e-anel-de-borracha-correndo-para-ferias-em-fundo-roxo_74952-1968.jpg?t=st=1709752315~exp=1709755915~hmac=3ba8e744d6a42d471a87b1b1c149f7a33531e37020270e9460a7b9d0b896e8f7&w=360' /></span>`
+
+        } else {
+            img_aluno.innerHTML = `<span> <img src='https://img.freepik.com/fotos-gratis/desenvolvedor-profissional-de-ti-trabalhando-em-casa_273609-20505.jpg?t=st=1709752362~exp=1709755962~hmac=5da88385d3d956929f8063dc0affb07bf3719c69d0a400aafb885dd490411df1&w=740'>
+            </span>`
+        }
+
+    }
+
+
+</script>

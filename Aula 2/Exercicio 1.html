@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Qual a sua idade? <input type:text id="input_idade">
+    <br>
+    <button onclick="calculoHomem()"> Aposentadoria homem </button>
+    <button onclick="calculoMulher()"> Aposentadoria mulher </button>
+</body>
+</html>
+<script>
+
+    function calculoHomem(){
+        var idadeUsuario = Number(input_idade.value);
+        var idadeAposentadoria = 70
+        var calculoAposentadoria = idadeAposentadoria - idadeUsuario
+        alert(`Faltam apenas ${calculoAposentadoria} anos para você conseguir se aposentar`)
+    }
+
+    function calculoMulher(){
+        var idadeUsuario = Number(input_idade.value);
+        var idadeAposentadoria = 60
+        var calculoAposentadoria = idadeAposentadoria - idadeUsuario
+        alert(`Faltam apenas ${calculoAposentadoria} anos para você conseguir se aposentar`)
+    }    
+
+</script>

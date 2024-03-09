@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Qual o nome do passageiro?
+    <input id="input_nome_passageiro"><br>
+    Quantos kilometros será até o destino do passageiro?
+    <input id="input_km"><br>
+    Qual a bandeira da corrida?
+    <input type="number" id="input_bandeira_corrida" min="1" max="3"><br>
+    Qual o horário da corrida?
+    <input type="number" id="input_horario_corrida" min="00" max="23"><br>
+    <button onclick="calcular_corrida()"> Calcular corrida
+    </button><br>
+    <p id="resultado_corrida"> </p>
+</body>
+
+</html>
+<script>
+
+    function calcular_corrida() {
+        var nomePassageiro = input_nome_passageiro.value;
+        var distancia = Number(input_km.value);
+        var bandeiraCorrida = Number(input_bandeira_corrida.value);
+        var horarioCorrida = Number(input_horario_corrida.value);
+        var precoCorridaBase = 1.25 * distancia;
+        var precoFinal = 0
+
+        if (bandeiraCorrida == 1) {
+            if (horarioCorrida >= 0) {
+                if (horarioCorrida <= 6) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.05);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro}. Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 7) {
+                if (horarioCorrida <= 12) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.10);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 13) {
+                if (horarioCorrida <= 23) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.15);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+        }
+        if (bandeiraCorrida == 2) {
+            if (horarioCorrida >= 0) {
+                if (horarioCorrida <= 6) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.1);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 7) {
+                if (horarioCorrida <= 12) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.20);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 13) {
+                if (horarioCorrida <= 23) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.3);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+        }
+        if (bandeiraCorrida == 3) {
+            if (horarioCorrida >= 0) {
+                if (horarioCorrida <= 6) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.15);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 7) {
+                if (horarioCorrida <= 12) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.30);
+                    resultado_corrida.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+
+            if (horarioCorrida >= 13) {
+                if (horarioCorrida <= 23) {
+                    precoFinal = precoCorridaBase + (precoCorridaBase * 0.45);
+                    resultado_corrida.innerHTML = `Olá, ${nomePassageiro} Sua corrida, será na bandeira ${bandeiraCorrida}, percorrerá ${distancia} km e o total da corrida será de R$${precoFinal}`
+                }
+            }
+        }
+
+
+    }
+
+
+
+</script>

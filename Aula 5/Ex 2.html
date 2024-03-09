@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .positivo{
+            font-style: italic;
+            color: blue;
+        }
+
+        .negativo{
+            font-style: bold;
+            color: red;
+
+        }
+
+    </style>
+</head>
+<body>
+    
+    Qual o saldo da conta? <input id="input_saldo"> <br>
+    Qual o valor do debito <input id="input_saida_conta"><br>
+    <button onclick="calcularSaldo()">
+    Analisar conta
+    </button><br><br>
+    <p id="msg_cliente"></p>
+
+
+</body>
+</html>
+<script>
+
+    function calcularSaldo(){
+
+        var saldo = Number(input_saldo.value);
+        var saida = Number(input_saida_conta.value);
+        var balanco = saldo - saida;
+
+        if (balanco >= 0 ){
+            msg_cliente.innerHTML = `<span id="positivo" >O saldo atual da conta corrente é R$${balanco}</span>`
+        } else{ 
+            msg_cliente.innerHTML = `<span id="negativo" >O saldo atual da conta corrente é R$${balanco}</span>`
+        }
+
+
+
+
+    }
+
+</script>

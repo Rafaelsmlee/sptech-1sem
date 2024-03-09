@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+Qual o seu nome Sayajin? <input type="text" id="input_nome">
+<br>
+Qual o seu ki normal guerreiro? <input type="number" id="input_kiNormal">
+<br>
+<br>
+<button onclick="superSayajinUm()">Ver ki na forma Super Saiyajin</button>
+<button onclick="superSayajinDois()">Ver ki na forma Super Saiyajin 2</button>
+</body>
+</html>
+<script>
+
+    function superSayajinUm(){
+        var nome = input_nome.value;
+        var kiNormal = Number(input_kiNormal.value);
+        var kiSSJ = kiNormal * 50;
+
+        alert(`Olá guerreiro ${nome} o seu ki na forma de Super Sayajin será de ${kiSSJ} `)
+    }
+
+    function superSayajinDois(){
+        var nome = input_nome.value;
+        var kiNormal = Number(input_kiNormal.value);
+        var kiSSJ2 = kiNormal * 100;
+
+        alert(`Olá guerreiro ${nome} o seu ki na forma de Super Sayajin 2 será de ${kiSSJ2}`)
+
+    }
+
+
+</script>

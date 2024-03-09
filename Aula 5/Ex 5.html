@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Qual a sua primeira nota? <input id="input_primeira_nota"> <br>
+    Qual a sua segunda nota? <input id="input_segunda_nota"><br>
+    <button onclick="verificarNota()">
+    Verificar situação
+    </button><br><br>
+    <div id="resultado_nota"></div>
+    
+</body>
+</html>
+<script>
+
+    function verificarNota(){
+        var primeiraNota = input_primeira_nota.value;
+        var segundaNota = input_segunda_nota.value;
+        var mediaNota = (primeiraNota + segundaNota)/2
+        var media = 6
+        if(mediaNota >= 6){
+            resultado_nota.innerHTML = `Parabéns, aprovado!`
+        } else{
+            resultado_nota.innerHTML = ` Tente outra vez...`
+        }
+    }
+</script>

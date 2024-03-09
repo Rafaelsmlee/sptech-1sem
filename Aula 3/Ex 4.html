@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Qual o sabor da pizza? 
+    <input type="text" id="input_sabor_pizza"><br>
+    Qual o preço da pizza?
+    <input type="number" id="input_preco_pizza"><br>
+    Quantos amigos vão comer?
+    <input type="number" id="input_qtd_amigos"><br><br>
+    <button onclick="valorPizza()">
+        Ver valor por amigo
+    </button><br>
+    <div id="pizzada">
+
+    </div>
+
+    
+</body>
+</html>
+<script>
+
+    function valorPizza(){
+
+        var saborPizza = input_sabor_pizza.value;
+        var precoPizza = Number(input_preco_pizza.value);
+        var qtdAmigos = Number(input_qtd_amigos.value);
+        var divisaoPizza = [precoPizza+ (precoPizza*0.1)]/qtdAmigos
+
+
+    pizzada.innerHTML = `
+    Cada amigo vai colaborar com R$${divisaoPizza} para a pizza de ${saborPizza}.  
+
+`
+
+    }
+
+
+
+</script>

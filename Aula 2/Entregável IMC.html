@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMCTech</title>
+</head>
+<body>
+
+    Qual o seu nome completo? <input type="text" id="input_nomeUsuario">
+    <br><br>
+    Qual o seu peso em <b>quilogramas</b>? Exemplo: 87.89kg <input type="number" step=".01" id="input_pesoUsuario">
+    <br><br>
+    Qual a sua altura em <b>metros</b>? Exemplo: 1.59m  <input type="number" step=".01" id="input_alturaUsuario">
+    <br><br>
+    <button onclick="calcularIMC()">Clique aqui para calcular IMC</button>
+</body>
+</html>
+<script>
+
+    alert(`Bem vindo ao IMCTech, todos os dados numéricos precisam usar "." no lugar da "," em caso de número decimal!`);
+
+function calcularIMC(){
+
+    var nomeUsuario = input_nomeUsuario.value;
+
+    var pesoUsuario = Number(input_pesoUsuario.value);
+
+
+    var alturaUsuario = Number(input_alturaUsuario.value);
+ 
+
+    var oz_pesoUsuario = (pesoUsuario * 35.274);
+    var ft_alturaUsuario = (alturaUsuario / 0.3048);
+
+    var imcCalculoInt = (pesoUsuario / (alturaUsuario * alturaUsuario));
+ 
+    var imcCalculoImp = (oz_pesoUsuario/(ft_alturaUsuario * ft_alturaUsuario));
+
+
+    alert(`Olá ${nomeUsuario}, o seu IMC é de ${imcCalculoInt}`)
+    alert(`O seu peso em onças(oz) é de ${oz_pesoUsuario} e sua altura em pés(ft) é de ${ft_alturaUsuario}`)
+    alert(` e o seu IMC usando as unidades alternativas de onças(oz) e pés(ft)  é de ${imcCalculoImp}`)
+
+}
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Quantos chocolates você está comprando? <input id="input_qnt_chocolate"> <br>
+    <button onclick="exibirValor()">
+        Compra
+    </button><br>
+    <p id="msg_compra"> </p>
+
+
+</body>
+</html>
+<script>
+
+    function exibirValor(){
+
+        var qntChocolate = Number(input_qnt_chocolate.value);
+        var precoFinal = 0
+
+        if (qntChocolate <= 12){
+            var precoFinal = qntChocolate * 3;
+            msg_compra.innerHTML = `o valor da sua compra foi de R$${precoFinal} `
+        } else{
+            var precoFinal = qntChocolate * 2.5;
+            msg_compra.innerHTML = `o valor da sua compra foi de R$${precoFinal}`
+        }
+    }
+
+
+</script>

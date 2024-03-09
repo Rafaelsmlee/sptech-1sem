@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Digite um número inteiro aqui! <input type="number" id="input_primeiroNumero">
+    <br>
+    Digite mais um número inteiro aqui! <input type="number" id="input_segundoNumero">
+    <br>
+    <button onclick="contaSoma()">SOMA</button>
+    <button onclick="contaSubtracao()">SUBTRAÇÃO</button>
+    <button onclick="contaMultiplicacao()">MULTIPLICAÇÃO</button>
+    <button onclick="contaDivisao()">DIVISÃO</button>
+</body>
+</html>
+<script>
+
+    function contaSoma(){
+        var primeiroNumero = Number(input_primeiroNumero.value);
+        var segundoNumero = Number(input_segundoNumero.value);
+        var resultado = primeiroNumero + segundoNumero;
+
+        alert(`A soma entre ${primeiroNumero} e ${segundoNumero} é ${resultado}`)
+    }
+
+    function contaSubtracao(){
+
+        var primeiroNumero = Number(input_primeiroNumero.value);
+        var segundoNumero = Number(input_segundoNumero.value);
+        var resultado = primeiroNumero - segundoNumero;
+
+        alert(`A diferença entre ${primeiroNumero} e ${segundoNumero} é ${resultado}`)
+
+    }
+
+</script>

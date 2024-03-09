@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Qual o nome da sua rua ou avenida ou vila?<input type="text" id="input_nomeRua">
+    <br>
+    <br>
+    Qual o número da sua casa ou apartamento? <input type="number" id="input_numeroCasa">
+    <button onclick="morar()">
+        Onde eu moro
+    </button>
+
+</body>
+</html>
+<script>
+
+    function morar(){
+        alert("Seu logradouro é " + input_nomeRua.value)
+        alert("Seu número do logradouro é " + input_numeroCasa.value)
+    }
+
+</script>

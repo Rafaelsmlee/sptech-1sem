@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Digite um número <input type="number" id="input_numero_usuario"><br><br>
+    <button onclick="calcularTabuada()">
+        Ver tabuada
+    </button> <br><br>
+    <div id="resultado_tabuada"></div>
+</body>
+</html>
+<script>
+
+    function calcularTabuada(){
+
+        var numeroUsuario = Number(input_numero_usuario.value)
+        var resultadoUm = numeroUsuario * 1;
+        var resultadoDois = numeroUsuario * 2;
+        var resultadoTres = numeroUsuario *3;
+        var resultadoQuatro = numeroUsuario*4;
+        var resultadoCinco = numeroUsuario *5
+        var resultadoSeis = numeroUsuario*6;
+        var resultadoSete = numeroUsuario*7;
+        var resultadoOito = numeroUsuario*8;
+        var resultadoNove =numeroUsuario*9;
+
+        resultado_tabuada.innerHTML = ` 
+        ${numeroUsuario} x 1 = ${resultadoUm}<br>
+        ${numeroUsuario} x 2 = ${resultadoDois}<br>
+        ${numeroUsuario} x 3 = ${resultadoTres}<br>
+        ${numeroUsuario} x 4 = ${resultadoQuatro}<br>
+        ${numeroUsuario} x 5 = ${resultadoCinco}<br>
+        ${numeroUsuario} x 6 = ${resultadoSeis}<br>
+        ${numeroUsuario} x 7 = ${resultadoSete}<br>
+        ${numeroUsuario} x 8 = ${resultadoOito}<br>
+        ${numeroUsuario} x 9 = ${resultadoNove}<br>
+        
+
+        `
+    }
+
+</script>
