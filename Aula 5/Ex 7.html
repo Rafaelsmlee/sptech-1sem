@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevador</title>
+    <style>
+        .elevador_ativo{
+            color: green;
+        }
+
+        .elevador_parado{
+            color:red;
+        }
+
+
+    </style>
+</head>
+<body>
+    Quantos homens estão no elevador? <input id="input_qtdade_homem"><br>
+    Quantas mulheres estão no elevador? <input id="input_qtdade_mulher"><br>
+    <button onclick="ligarElevedor()">Ligar elevador</button><br>
+    <div id="msg_elevador"> </div>
+</body>
+</html>
+<script>
+
+    function ligarElevedor(){
+        var qtdade_homem = Number(input_qtdade_homem.value);
+        var qtdade_mulher = Number(input_qtdade_mulher.value);
+        var peso_homem = 90;
+        var peso_mulher = 70;
+        var peso_total = (qtdade_homem * peso_homem + qtdade_mulher*peso_mulher) ;
+        
+        if(peso_total<= 500){
+            msg_elevador.innerHTML =  `<span class = elevador_ativo> Elevador vai se mover, pois está com ${peso_total}kg  </span>`
+        } else{
+            var perder_peso = peso_total - 500;
+            msg_elevador.innerHTML = `<span class = elevador_parado> Alguém precisa descer. Precisa perder ${perder_peso} kg para mover o elevador </span>` 
+        }
+
+    }
+
+</script>

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .body{
+            margin:0;
+        }
+
         .positivo{
             font-style: italic;
             color: blue;
@@ -39,9 +43,9 @@
         var balanco = saldo - saida;
 
         if (balanco >= 0 ){
-            msg_cliente.innerHTML = `<span id="positivo" >O saldo atual da conta corrente é R$${balanco}</span>`
+            msg_cliente.innerHTML = `<span class="positivo" >O saldo atual da conta corrente é R$${balanco}</span>`
         } else{ 
-            msg_cliente.innerHTML = `<span id="negativo" >O saldo atual da conta corrente é R$${balanco}</span>`
+            msg_cliente.innerHTML = `<span class="negativo" >O saldo atual da conta corrente é R$${balanco}</span>`
         }
 
 

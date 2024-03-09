@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Qual a temperatura do ambiente? <input id="input_temperatura_ambiente"><br>
+    <button onclick="verificarClima()"> Verificar o clima</button> <br><br>
+    <div id="ver_comida">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    function verificarClima(){
+        var temperaturaAmbiente = Number(input_temperatura_ambiente.value);
+        if (temperaturaAmbiente < 10) {
+            ver_comida.innerHTML = `<span> <img src='https://deliciafit.com.br/wp-content/uploads/2022/03/comida-congelada-porto-alegre-delicia-fit-marmitas-congeladas.jpg' 
+                </span>`
+        } else{
+            ver_comida.innerHTML = `<span> <img src='https://1.bp.blogspot.com/-cFJBflsQ61M/UH6LZj9fW5I/AAAAAAAACKM/veQKqPI00_8/s1600/comida-estragada.jpg' </span>`
+        }
+    }
+
+</script>
