@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Qual a temperatura? <input type="number" id="input_temperatura"><br>
+    <button onclick="lerTemperatura()">Ler temperatura</button><br>
+    <div id="mostrarTemperatura"></div>
+
+</body>
+
+</html>
+<script>
+    function lerTemperatura() {
+        let temperatura = Number(input_temperatura.value);
+
+        if (temperatura <= 14) {
+            mostrarTemperatura.innerHTML = `Congelante `
+        } else if (temperatura <= 21) {
+            if (temperatura > 14) {
+                mostrarTemperatura.innerHTML = `Com Frio`
+            }
+        } else if (temperatura <= 24) {
+            if(temperatura > 21){
+                mostrarTemperatura.innerHTML = `Confortável`
+            }
+        } else if(temperatura <=31){
+            if(temperatura > 24){
+                mostrarTemperatura.innerHTML = `Com calor`
+            }
+        } else{
+            mostrarTemperatura.innerHTML = `Calor Escaldante` 
+        }
+    }
+
+</script>

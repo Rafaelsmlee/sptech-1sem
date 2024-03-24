@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .corinthans{
+        background-color: black;
+        color: white;
+    }
+    .santos{
+        color: black;
+    }
+    .palmeiras{
+        background-color: green;
+        color: white;
+    }
+    .saoPaulo{
+        background-color: red;
+    }
+</style>
+<body>
+    Qual time de São Paulo você torce? <input type="text" id="input_times"><br>
+    <button onclick="mostrarInformacoes()">Fale sobre esse time</button><br>
+    <div id="mostrarTexto"> </div>
+    <span> </span>
+</body>
+</html>
+<script>
+
+    function mostrarInformacoes(){
+        let times = input_times.value;
+
+        if (times =="Corinthans"){
+            mostrarTexto.innerHTML = `<span class=corinthans> Salve o Corinthians</span>`
+        } else if(times =="Palmeiras"){
+            mostrarTexto.innerHTML = `<span class=palmeiras> Salve o alviverde imponente </span>`
+        } else if( times == "Santos"){
+            mostrarTexto.innerHTML = `<span class=santos> Agora quem dá a bola é o Santos</span>`
+        } else{
+            mostrarTexto.innerHTML = `<span class=saoPaulo> Salve Tricolor paulista </span>`
+        }
+    }
+
+
+</script>

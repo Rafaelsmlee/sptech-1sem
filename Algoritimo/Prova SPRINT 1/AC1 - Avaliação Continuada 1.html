@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAAAAAAA</title>
+</head>
+
+<body>
+
+
+    Qual a quantidade de energia consumida em KWh por mês? <br>
+    <input type="number" id="input_kwh_mes"> <br>
+    Qual a bandeira tarifária de energia? ("Vermelha", "Amarela", "Verde")<br>
+    <input type="text" id="input_bandeira"><br>
+    Qual o volume de água consumida em litros por mês? <br>
+    <input type="number" id="input_agua_mes"><br>
+    Quanto vazamentos de água teve no mês? <br>
+    <input type="number" id="input_vazamento_agua_mes"><br>
+    Qual o volume de gás consumido em litros por mês? <br>
+    <input type="number" id="input_gas_mes"><br>
+    Quantos MB (megabytes) o plano de internet fornece por mês?<br>
+    <input type="number" id="input_internet"><br>
+    O plano de internet é vinculada a uma linha telefonica? <br>
+    <input id="input_linha_telefonica"><br> <br>
+    <button onclick="calcularDespesas()"> Calcular Despesas Fixas</button> <br>
+    <div id="mostrarDespesas"></div>
+</body>
+
+
+
+</html>
+<script>
+    function calcularDespesas() {
+
+        var kwh = Number(input_kwh_mes.value);
+        var bandeira = input_bandeira.value;
+        var agua = Number(input_agua_mes.value);
+        var vazamento = Number(input_vazamento_agua_mes.value);
+        var gas = Number(input_gas_mes.value);
+        var internet = Number(input_internet.value);
+        var telefone = input_linha_telefonica.value;
+        var desconto = 0
+
+        if (kwh <= 50) {
+            if (bandeira === "Verde") {
+                var valor_kwh = kwh * 0.75;
+                var desconto = valor_kwh * 0.1;
+                var valor_kwh_desconto = valor_kwh - desconto;
+                var valor_kwh = valor_kwh_desconto
+
+            } else {
+                if (bandeira === "Amarela") {
+                    var valor_kwh = kwh * 0.9
+                    var desconto = valor_kwh * 0.1;
+                    var valor_kwh_desconto = valor_kwh - desconto;
+                    var valor_kwh = valor_kwh_desconto
+
+                } else {
+                    if (bandeira === "Vermelha") {
+                        var valor_kwh = kwh
+                        var desconto = valor_kwh * 0.1;
+                        var valor_kwh_desconto = valor_kwh - desconto;
+                        var valor_kwh = valor_kwh_desconto
+                    }
+
+                }
+            }
+        }
+        else {
+            if (bandeira === "Verde") {
+                var valor_kwh = kwh * 0.75;
+
+            } else if (bandeira === "Amarela") {
+
+                var valor_kwh = kwh * 0.9;
+
+            } else {
+                if (bandeira === "Vermelha") {
+                    var valor_kwh = kwh;
+
+                }
+            }
+        }
+
+
+
+        var conta_agua = agua * 3.5;
+        if (vazamento > 0) {
+            var conta_vazamento = vazamento * 10;
+            var conta_agua = conta_agua + conta_vazamento;
+        }
+
+        var conta_gas = gas * 2.5;
+
+        var conta_internet = internet * 0.8;
+        if (telefone == "Sim") {
+            var aumento_conta_internet = conta_internet * 0.25;
+            var conta_internet = conta_internet + aumento_conta_internet;
+        } else {
+            var desconto_conta_internet = conta_internet * 0.075;
+            var conta_internet = conta_internet - desconto_conta_internet;
+        }
+
+        var despesa_mensal = valor_kwh + conta_agua + conta_gas + conta_internet;
+
+
+
+        mostrarDespesas.innerHTML = `
+        Com o consumo de ${kwh} kWh na bandeira ${bandeira}, a conta de energia totaliza R$ ${valor_kwh}. <br>
+        Com o consumo de ${agua} litros de água contendo ${vazamento} vazamentos, a conta de água totaliza R$${conta_agua}. <br>
+        Com o consumo de ${gas} litros de gás, a conta de gás totaliza R$ ${conta_gas}. <br>
+        Com o consumo de ${internet} MB de internet, o valor do plano de internet/telefone totaliza R$ ${conta_internet}. <br>
+        Gasto total de despesas mensal: R$ ${despesa_mensal}. 
+         `
+    }
+
+
+
+</script>

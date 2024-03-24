@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Qual o valor de x0 do retangulo 1? <input type="number" id="input_retangulo_x0"><br>
+    Qual o valor de y0 do retangulo 1? <input type="number" id="input_retangulo_y0"><br>
+    Qual o valor de x1 do retangulo 1? <input type="number" id="input_retangulo_x1"><br>
+    Qual o valor de y1 do retangulo 1? <input type="number" id="input_retangulo_y1"><br>
+    <br>
+    Qual o valor de x0 do retangulo 2? <input type="number" id="input_retangulo2_x0"><br>
+    Qual o valor de y0 do retangulo 2? <input type="number" id="input_retangulo2_y0"><br>
+    Qual o valor de x1 do retangulo 2? <input type="number" id="input_retangulo2_x1"><br>
+    Qual o valor de y1 do retangulo 2? <input type="number" id="input_retangulo2_y1"><br>
+
+    <button onclick="colidir()">Colidem?</button><br>
+    <p id="mostrarBoom"></p>
+
+</body>
+
+</html>
+
+<script>
+
+    function colidir(){
+
+        let retangulo_x0 = Number(input_retangulo_x0.value);
+        let retangulo_y0 = Number(input_retangulo_y0.value);
+        let retangulo_x1 = Number(input_retangulo_x1.value);
+        let retangulo_y1 = Number(input_retangulo_y1.value);
+
+        let retangulo2_x0 = Number(input_retangulo2_x0.value);
+        let retangulo2_y0 = Number(input_retangulo2_y0.value);
+        let retangulo2_x1 = Number(input_retangulo2_x1.value);
+        let retangulo2_y1 = Number(input_retangulo2_y1.value);
+
+        mostrarBoom.innerHTML = `Nem relaram`
+
+        let teste = retangulo_x0 + retangulo_y0
+        let teste1 = retangulo2_x1 + retangulo2_y1
+        let teste2 = teste - teste1
+
+
+
+       if (retangulo_x1 >= retangulo2_x0){
+             if (retangulo_y1 >=retangulo2_y0 ){
+                mostrarBoom.innerHTML = ` Colidiram! Corra!`
+            }
+        } else if (retangulo2_x1 >=retangulo_x0 ){
+            if (retangulo2_y1 >= retangulo_y0)
+            mostrarBoom.innerHTML = `Nem relaram`
+        } 
+
+    }
+
+// 5 6 6 7 
+// 2 3 4 4
+
+//1 7 2 8
+//1 4 2 5
+</script>
