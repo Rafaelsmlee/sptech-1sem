@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 1</title>
+</head>
+
+<body>
+
+    Qual a temperatura atual? <input type="number" id="input_temperatura_atual"><br>
+    <button onclick="verificarTemperatura()">Ver situação</button>
+
+</body>
+
+</html>
+<script>
+
+    function verificarTemperatura(){
+        let temperatura = Number(input_temperatura_atual.value)
+        let mensagem = ''
+
+        if(temperatura >= 21 && temperatura <= 24){
+            mensagem = 'Temperatura confortável😊 '
+        } else {
+            mensagem = 'Temperatura DESCONFORTÁVEL 😣'
+        }
+        alert(mensagem)
+    }
+
+</script>

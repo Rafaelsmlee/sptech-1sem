@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 3</title>
+</head>
+
+<body>
+
+    Qual a nota a nota do aluno <input type="number" id="input_nota_aluno"><br>
+    <button onclick="avaliarNota()">Avaliar o aluno</button>
+
+
+</body>
+
+</html>
+<script>
+
+    function avaliarNota() {
+        let nota_aluno = Number(input_nota_aluno.value);
+        let mensagem = 'Onde já se viu nota menor que 0 e maior que 10 ? !';
+
+        if (nota_aluno >= 0 && nota_aluno <= 10) {
+            mensagem = 'Nota válida!'
+        }
+        alert(mensagem);
+    }
+
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+
+<body>
+
+    Qual o modo de pagamento? <input type="text" id="input_modo_pagamento"><br>
+    <button onclick="analisar()">Analisar compra</button><br>
+    <p id="mostrarPagamento"></p>
+
+</body>
+
+</html>
+<script>
+
+    function analisar(){
+        let pagamento = input_modo_pagamento.value;
+        if (pagamento == 'Dinheiro' || pagamento == 'Cartão de Débito'){
+            mostrarPagamento.innerHTML= `Você terá que pagar a vista`
+        } else if(pagamento == 'Cartão de Crédito' || pagamento == 'Boleto'){
+            mostrarPagamento.innerHTML= `Pagamento poderá ser parcelado`
+        }
+    }
+
+
+</script>
