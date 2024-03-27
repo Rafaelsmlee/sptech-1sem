@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 9</title>
+</head>
+
+<body>
+
+    <p>Qual a altura desejada para os próximos pilotos em metros?</p><br>
+    Altura inicial<br>
+    <input type="number" id="input_altura_incial"><br>
+    Altura Final <br>
+    <input type="number" id="input_altura_final"><br><br>
+    Qual o nome do candidato?<br>
+    <input type="text" id="input_nome_candidato"><br>
+    Qual a altura do candidato? <br>
+    <input type="number" id="input_altura_candidato"><br>
+    <button onclick="descobrirPiloto()">Você tem o que é necessário?</button><br>
+    <p id="mostrarPiloto"></p>
+
+
+
+
+</body>
+
+</html>
+<script>
+    function descobrirPiloto() {
+
+        let altura_inicial = Number(input_altura_incial.value);
+        let altura_final = Number(input_altura_final.value);
+        let nome_candidato = input_nome_candidato.value;
+        let altura_candidato = Number(input_altura_candidato.value);
+        let mensagem = 'Erro';
+
+        if (altura_candidato >= altura_inicial && altura_candidato <= altura_final) {
+            mostrarPiloto.innerHTML = `O candidato ${nome_candidato} com altura de ${altura_candidato} participará do processo de seleção de piloto.`
+        } else if(altura_candidato < altura_inicial && altura_candidato > altura_final){
+            mostrarPiloto.innerHTML = `Infelizmente o candidato ${nome_candidato} com altura de ${altura_candidato} não atende os requisitos.`
+        } else if(altura_inicial < 1 && altura_final < altura_inicial){
+            mostrarPiloto.innerHTML = `${mensagem}`
+        }
+
+    }
+
+
+
+</script>
