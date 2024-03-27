@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 11</title>
+</head>
+
+<body>
+    <h2>Recarga do cartão fidelidade do metrô de São Paulo!</h2><br>
+
+    Qual a quantidade de passagens que deseja comprar?<br>
+    <input type="number" id="input_qtdade_passagens"><br>
+    <button onclick="comprar()">Comprar</button><br>
+    <p id="mostrarResultado"></p>
+
+</body>
+
+</html>
+<script>
+
+    function comprar(){
+        let qtdade_passagens = Number(input_qtdade_passagens.value);
+        let mensagem = 'Quantaidade inválida para o Fidelidade!'
+        let valor_passagem = 4.40
+        let passagem_desconto = 1
+        let valor_final = (qtdade_passagens*valor_passagem)*passagem_desconto;
+        let valor_final_formatado = valor_final.toLocaleString('pt-br', {style: 'currency', currency:'BRL'});
+
+        mostrarResultado.innerHTML = `Quantaidade inválida para o Fidelidade!`
+
+        if(qtdade_passagens >= 8 && qtdade_passagens<=19){
+            passagem_desconto = 1.3
+            mostrarResultado.innerHTML = `Total a pagar ${valor_final_formatado}`
+        } else if(qtdade_passagens >=20 && qtdade_passagens<=49){
+            passagem_desconto = 1.5
+            mostrarResultado.innerHTML = `Total a pagar ${valor_final_formatado}`
+        } else if(qntidade_passagem == 50){
+            passagem_desconto=1.7
+            mostrarResultado.innerHTML = `Total a pagar ${valor_final_formatado}`
+        } 
+          
+    }
+
+
+</script>

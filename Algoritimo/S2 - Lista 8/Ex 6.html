@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 5</title>
+</head>
+
+<body>
+    Qual a nota do aluno?<br>
+    <input type="number" id="input_nota_aluno"><br><br>
+    Qual a frequência do aluno? <br>
+    <input type="number" id="input_frequencia_aluno"><br><br>
+    <button onclick="Avaliar()">Avaliar aluno</button><br>
+    <p id="mostrarAvaliacao"></p>
+
+</body>
+
+</html>
+<script>
+    function Avaliar(){
+
+        let nota_aluno = Number(input_nota_aluno.value);
+        let frequencia_aluno = Number(input_frequencia_aluno.value);
+
+        if(nota_aluno >=6 && frequencia_aluno >= 75){
+            mostrarAvaliacao.innerHTML = `Parabéns! Aprovado!`
+        }else{
+            mostrarAvaliacao.innerHTML = `Infelizmente, não foi desta vez.`
+        }
+
+    }
+
+
+
+</script>
