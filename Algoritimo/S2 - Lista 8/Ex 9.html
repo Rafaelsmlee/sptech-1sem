@@ -34,14 +34,15 @@
         let altura_final = Number(input_altura_final.value);
         let nome_candidato = input_nome_candidato.value;
         let altura_candidato = Number(input_altura_candidato.value);
-        let mensagem = 'Erro';
 
-        if (altura_candidato >= altura_inicial && altura_candidato <= altura_final) {
-            mostrarPiloto.innerHTML = `O candidato ${nome_candidato} com altura de ${altura_candidato} participará do processo de seleção de piloto.`
-        } else if(altura_candidato < altura_inicial && altura_candidato > altura_final){
-            mostrarPiloto.innerHTML = `Infelizmente o candidato ${nome_candidato} com altura de ${altura_candidato} não atende os requisitos.`
-        } else if(altura_inicial < 1 && altura_final < altura_inicial){
-            mostrarPiloto.innerHTML = `${mensagem}`
+        if (altura_inicial > 1 && altura_final > altura_inicial) {
+            if (altura_candidato >= altura_inicial && altura_candidato <= altura_final) {
+                mostrarPiloto.innerHTML += `O candidato ${nome_candidato} com altura de ${altura_candidato} participará do processo de seleção de piloto.<br>`
+            } else if (altura_candidato < altura_inicial && altura_candidato < altura_final) {
+                mostrarPiloto.innerHTML += `Infelizmente o candidato ${nome_candidato} com altura de ${altura_candidato} não atende os requisitos.`
+            }
+        }        else {
+            alert('Erro, por favor revise os dados.')
         }
 
     }
