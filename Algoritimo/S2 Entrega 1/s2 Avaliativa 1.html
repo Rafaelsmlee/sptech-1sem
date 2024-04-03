@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco KNAB - O banco que pensa em você</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Seja bem vindo ao banco KNAB
+        </h1>
+
+        <h2>
+            Simulação de Emprestimos e Investimentos
+        </h2>
+
+        <div class="login">
+            <div class="dados_conta">
+                <h3>Entre com os dados de sua conta</h3>
+            </div>
+            <div class="botoes_login" id="div_container_login">
+                <input type="number" id="input_conta_cliente" placeholder="Conta">
+                <input type="number" id="input_digito_cliente" placeholder="Digito">
+                <input type="password" id="input_senha_cliente" placeholder="Senha">
+            </div>
+            <div class="botao_simulacao">
+                <button onclick="Simular()">Simulação</button>
+            </div>
+        </div>
+
+        <div class="investimento" id="div_container_investimento">
+            <div class="valor_operacao">
+                <select id="select_selecionarBase">
+                    <option value="operacao">Selecione a operação</option>
+                    <option id="id_emprestimo" value="emprestimo">Emprestimo</option>
+                    <option id="id_investimento" value="investimento">Investimento</option>
+                </select>
+            </div>
+            <div class="botao_selecionar">
+                <select id="select_selecionarBase">
+                    <option value="prazo" value="prazo">Selecione o prazo</option>
+                    <option id="id_curto" value="prazo_curto" >Curto</option>
+                    <option id="id_medio" value="prazo_medio">Médio</option>
+                    <option id="id_longo" value="prazo_longo">Longo</option>
+                </select>
+            </div>
+            <div class="botao_resultado">
+                <button>Mostrar o Resultado</button>
+            </div>
+            <div id="mostrarResultado">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!--
+         b.1)  Conta tem que ser diferente de zero;
+
+     b.2) Digito tem que ser igual ao resto da divisão da conta por 10;
+
+     b.3) A senha será composta de:
+
+               i.      “manaus” se o digito for 0, 1, 2 ou 3;
+
+               ii.      “recife” se o digito estiver entre 4 e 7;
+
+               iii.      “fortaleza” para os demais dígitos;
+
+     b.4) A senha também deve conter: 1 caractere "#" ou 1 caractere "@", pelo menos 1 caractere numérico e pelo menos 10 dígitos.
+
+Exemplo de senha: "manaus#1234"
+
+Exemplo de senha: "@9090recife"
+
+Exemplo de senha: "1996@fortaleza"
+-->
+<script>
+    function simular() {
+
+        const conta_cliente = Number(input_conta_cliente.value);
+        const digito_cliente = Number(input_digito_cliente.value);
+        const senha_cliente = Number(input_senha_cliente.value);
+        const divisao_conta = conta_cliente % 10
+        const emprestimo = id_emprestimo.value
+        const investimento = id_investimento.value
+        const curto = id_curto.value
+        const medio = id_medio.value
+    
+
+        if (conta_cliente != 0) {
+            if (digito_cliente == divisaoconta && senha_cliente.length >= 10 && indexOf('@') || indexOf('#')) {
+                if (digito_cliente < 4 && indexOf('manaus')) {
+
+                } else {
+                    alert("Erro, a sua senha deve conter um número de 0-3 e a palavra 'manaus' ")
+                }
+                if (digito_cliente >= 4 && digito < 8 && indexOf('recife')) {
+                  
+                } else {
+                    alert("Erro, a sua senha deve conter um número de 4-7 e a palavra 'recife' ")
+                }
+                if (digito_cliente >= 9) {
+
+                    div_container_login.style = "none";
+                    div_container_investimento.style = "block";
+
+                    if (prazo_curto || prazo_medio){
+                        alert ('Esta operação está condicionada ao seu perfil')
+                        if(operacao){
+                            mostrarResultado.innerHTML += `Simulação ${ } – Para o empréstimo de R$99,99 no PP prazo será cobrado os juros de R$ 99,99 ao ano `
+
+                        }
+                    }
+
+                     
+                    } else {
+                    alert("Erro, a sua senha deve conter um número de no mínimo de 9 e a palavra 'fortaleza' ")
+                }
+
+            } else {
+                alert('Senha invalida, a senha deve conter no mínimo 10 caracteres e os símbolos "@" ou "#"')
+            }
+        }
+    }
+</script>
