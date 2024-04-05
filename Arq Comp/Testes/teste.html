@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>222</title>
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+  <body>
+    <main>
+      <h1>2222</h1>
+      <div id="container">
+        <h3 id="h3_escolherBase">Escolha a base</h3>
+        <select id="select_selecionarBase" onclick="sumirOpçãoPorBaseSelecionada()">
+          <option value="vazio"></option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="baseDecimal">Decimal</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="baseBinaria">Binário</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="baseOctal">Octal</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="baseHexa">Hexadecimal</option>
+        </select>
+        <input id="numeroBase" type="text" placeholder="Digite o valor" autocomplete="off"/>
+        <br />
+        <h3 id="converterPara">Converter para:</h3>
+        <div class = "teste" id="basesGerais">
+          <div id="div_decimal" style="display: block">
+            <input type="checkbox" onclick="clickCheckBox_dec()"/><span class="check_css">ㅤDecimalㅤ</span>
+            <div id="dec">ㅤ</div>
+          </div>
+          <br>
+          <div id="div_binaria" style="display: block">
+            <input type="checkbox" onclick="clickCheckBox_bin()" /><span class="check_css">ㅤBinárioㅤ</span>
+            <div id="bin">ㅤ</div>
+          </div>
+          <br/>
+          <div id="div_octal">
+            <input type="checkbox" onclick="clickCheckBox_octal()" /><span class="check_css"> <span class="check_css">ㅤOctalㅤㅤ</span>
+            <div id="octal">ㅤ</div>
+          </div>
+          <br/>
+          <div id="div_hexa">
+            <input type="checkbox" onclick="clickCheckBox_hexa()"/><span class="check_css"> Hexadecimal</span>
+          
+            <div id="hexa">ㅤ</div>
+        </div>
+        </div>
+        <br/>
+        <button class ="botaoConverter" onclick="sumirOpçãoPorBaseSelecionada()">Converter</button>
+      </div>
+    </main>
+    <script>
+
+      function sumirOpçãoPorBaseSelecionada() {
+        let baseEscolhida = select_selecionarBase.value;
+
+        if (baseEscolhida == 'baseDecimal') {
+          div_decimal.style.display = "none";
+          div_binaria.style.display = "block";
+          div_octal.style.display = "block";
+          div_hexa.style.display = "block";
+
+          let numeroConvertido = Number(numeroBase.value)
+
+          if (!isNaN(numeroConvertido)) { // Verifica se o número inserido é válido
+          let binaria = numeroConvertido.toString(2);
+          let octal = numeroConvertido.toString(8);
+          let hexadecimal = numeroConvertido.toString(16);
+          document.getElementById("bin").innerHTML = ` ${binaria}`;
+          document.getElementById("octal").innerHTML = ` ${octal}`;
+          document.getElementById("hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
+        } else {
+          alert("Número decimal inválido");
+        }
+        } else if (baseEscolhida == 'baseBinaria') {
+          // if(numeroBase.match(/[^0-1]/g)) {
+          div_decimal.style.display = "block";
+          div_binaria.style.display = "none";
+          div_octal.style.display = "block";
+          div_hexa.style.display = "block";
+
+          let numeroEscolhido = Number(numeroBase.value);
+          let numeroConvertido = parseInt(numeroEscolhido, 2);
+
+          let decimal = numeroConvertido.toString(10);
+          let octal = numeroConvertido.toString(8);
+          let hexadecimal = numeroConvertido.toString(16);
+          document.getElementById("dec").innerHTML = ` ${decimal}`;
+          document.getElementById("octal").innerHTML = ` ${octal}`;
+          document.getElementById("hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
+        // }
+        
+          
+        } else if (baseEscolhida == 'baseOctal') {
+          div_decimal.style.display = 'block';
+          div_binaria.style.display = 'block';
+          div_octal.style.display = 'none';
+          div_hexa.style.display = 'block';
+
+          let numeroEscolhido = Number(numeroBase.value);
+          let numeroConvertido = parseInt(numeroEscolhido, 8);
+          let decimal = numeroConvertido.toString(10);
+          let binaria = numeroConvertido.toString(2);
+          let hexadecimal = numeroConvertido.toString(16);
+          document.getElementById("dec").innerHTML = ` ${decimal}`;
+          document.getElementById("bin").innerHTML = ` ${binaria}`;
+          document.getElementById("hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
+
+        } else if (baseEscolhida == 'baseHexa') {
+            div_decimal.style.display = 'block';
+            div_binaria.style.display = 'block';
+            div_octal.style.display = 'block';
+            div_hexa.style.display = 'none';
+            
+            
+            let numeroEscolhido = numeroBase.value;
+            let numeroConvertido = parseInt(numeroEscolhido, 16);
+            let decimal = numeroConvertido.toString(10);
+            let binaria = numeroConvertido.toString(2);
+            let octal = numeroConvertido.toString(8);
+            
+            document.getElementById("dec").innerHTML = ` ${decimal}`;
+            document.getElementById("bin").innerHTML = ` ${binaria}`;
+            document.getElementById("octal").innerHTML = ` ${octal}`;
+        }
+      }
+
+      function clickCheckBox_dec() {
+        let divDec = document.getElementById("dec");
+        let verificacaoDivBlock = divDec.style.display == "block";
+
+        if (verificacaoDivBlock) {
+          divDec.style.display = "none";
+        } else {
+          divDec.style.display = "block";
+        }
+      }
+
+      function clickCheckBox_bin() {
+        let divBin = document.getElementById("bin");
+        let verificacaoDivBlock = divBin.style.display == "block";
+
+        if (verificacaoDivBlock) {
+          divBin.style.display = "none";
+        } else {
+          divBin.style.display = "block";
+        }
+      }
+
+      function clickCheckBox_octal() {
+        let divOctal = document.getElementById("octal");
+        let verificacaoDivBlock = divOctal.style.display == "block";
+
+        if (verificacaoDivBlock) {
+          divOctal.style.display = "none";
+        } else {
+          divOctal.style.display = "block";
+        }
+      }
+
+      function clickCheckBox_hexa() {
+        let divHexa = document.getElementById("hexa");
+        let verificacaoDivBlock = divHexa.style.display == "block";
+
+        if (verificacaoDivBlock) {
+          divHexa.style.display = "none";
+        } else {
+          divHexa.style.display = "block";
+        }
+      }
+    </script>
+        <video autoplay muted loop id="codevideo">
+          <source src="video_bg.mp4" type="video/mp4">
+        </video>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japan's Machine</title>
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+  <body>
+    <main>
+      <h1>aaaa</h1>
+      <div id="container">
+        <h3 id="h3_escolherBase">Escolha a base</h3>
+        <select id="select_selecionarBase" onclick="sumirOpçãoPorBaseSelecionada()">
+          <option value="vazio"></option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="10">Decimal</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="2">Binário</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="8">Octal</option>
+          <option onchange="sumirOpçãoPorBaseSelecionada()" value="16">Hexadecimal</option>
+        </select>
+        <input id="numeroBase" type="text" placeholder="Digite o valor" autocomplete="off"/>
+        <br />
+        <h3 id="converterPara">Converter para:</h3>
+        <div class = "teste" id="basesGerais">
+          <div id="div_decimal" style="display: block">
+            <input type="checkbox" onclick="clickCheckBox_dec()"/><span class="check_css">ㅤDecimalㅤ</span>
+            <div id="dec">0</div>
+          </div>
+          <br>
+          <div id="div_binaria" style="display: block">
+            <input type="checkbox" onclick="clickCheckBox_bin()" /><span class="check_css">ㅤBinárioㅤ</span>
+            <div id="bin">ㅤ</div>
+          </div>
+          <br/>
+          <div id="div_octal">
+            <input type="checkbox" onclick="clickCheckBox_octal()" /><span class="check_css"> <span class="check_css">ㅤOctalㅤㅤ</span>
+            <div id="octal">ㅤ</div>
+          </div>
+          <br/>
+          <div id="div_hexa">
+            <input type="checkbox" onclick="clickCheckBox_hexa()"/><span class="check_css"> Hexadecimal</span>
+          
+            <div id="hexa">ㅤ</div>
+        </div>
+        </div>
+        <br/>
+        <button class ="botaoConverter" onclick="sumirOpçãoPorBaseSelecionada()">Converter</button>
+      </div>
+    </main>
+    <script>
+
+    </script>
+  </body>
+</html>
+
+<script>
+
+function converter() {
+                let base = Number(select_base.value)
+                let valor = input_valorConverter.value
+                let valorConverter = parseInt(valor, base)
+
+                let decimal = valorConverter.toString(10);
+
+                let octal = valorConverter.toString(8);
+
+                let hexadecimal = valorConverter.toString(16);
+
+                let binaria = valorConverter.toString(2);
+
+                if (base == 10 && valor.match(/[^0-9]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 2 && valor.match(/[^0-1]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 8 && valor.match(/[^0-7]/g)) {
+                        alert("Valor inválido!")
+                }
+                else if (base == 16 && valor.match(/[^0-9]/g) && valor.match(/[g-z]/g)) {
+                        alert("Valor inválido!")
+                }
+                else {
+                        document.getElementById("div_decimal").innerHTML = ` ${decimal}`;
+                        document.getElementById("div_octal").innerHTML = ` ${octal}`;
+                        document.getElementById("div_hexa").innerHTML = ` ${hexadecimal.toUpperCase()}`;
+                        document.getElementById("div_binario").innerHTML = ` ${binaria}`;
+                }
+
+        }
+
+        function aparecer_decimal() {
+                if (div_decimal.style.display == 'block') {
+                        div_decimal.style.display = 'none'
+                } else {
+                        div_decimal.style.display = 'block'
+                }
+        }
+
+        function aparecer_bin() {
+                if (div_binario.style.display == 'block') {
+                        div_binario.style.display = 'none'
+                } else {
+                        div_binario.style.display = 'block'
+                }
+        }
+
+        function aparecer_hexa() {
+                if (div_hexa.style.display == 'block') {
+                        div_hexa.style.display = 'none'
+                } else {
+                        div_hexa.style.display = 'block'
+                }
+        }
+
+        function aparecer_octal() {
+                if (div_octal.style.display == 'block') {
+                        div_octal.style.display = 'none'
+                } else {
+                        div_octal.style.display = 'block'
+                }
+        }
+</script>
