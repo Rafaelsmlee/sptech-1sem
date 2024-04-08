@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 10</title>
+</head>
+<body>
+
+    Digite o primeiro valor <input type="number" id="input_user_first_number"><br>
+    Digite o segundo valor <input type="number" id="input_user_second_number"><br>
+    <button onclick="pair_lover()">S2 Pares</button>
+    <div id="div_double_trouble"></div>
+    
+</body>
+</html>
+<script>
+    function pair_lover(){
+        const first_number = Number(input_user_first_number.value);
+        const second_number = Number(input_user_second_number.value);
+        for(let counter = first_number; counter <= second_number ; counter += 1 ){
+            if(counter %2 == 0){
+                div_double_trouble.innerHTML += `${counter} <br>`
+            }
+        }
+
+    }
+</script>
+<!-- 10. Crie um programa o qual: 
+
+a) Solicite um intervalo crescente de valores numéricos  
+
+b) Ao clicar num botão "S2 Pares"... 
+
+c) Exiba, debaixo do botão, todos os números pares contidos no intervalo. -->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercico 3</title>
+</head>
+<body>
+    
+    <input type="text" id="input_frase" placeholder="Ex: É muito dificil"><br>
+    <button onclick="opinar()">Diga algo sobre a matéria de Algoritmos</button>
+    <div id="div_opiniao"></div>
+    
+</body>
+</html>
+<script>
+
+    function opinar(){
+
+        let frase = input_frase.value
+
+        for(let contador = 1 ; contador <= 7; contador++){
+            div_opiniao.innerHTML += `${contador} ${frase}.`
+        }
+
+    }
+
+</script>
+<!-- 2. Crie um programa o qual: 
+
+a) Tenha um botão "Diga algo sobre a matéria de Algoritmos";
+
+b) Ao clicar nele, mostre na própria página 7 vezes uma frase a sua escolha, uma abaixo da outra. 
+3. Refaça o programa anterior de tal forma que, antes de cada frase apareça um contador. Ex: Se a frase digitada foi “Boa Tarde” a página ficará assim: 
+
+   1. Boa tarde 
+
+   2. Boa tarde 
+
+   ... 
+
+   7. Boa tarde-->

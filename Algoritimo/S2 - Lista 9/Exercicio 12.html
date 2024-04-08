@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 12</title>
+</head>
+
+<body>
+    Qual a tabuada que gostaria de ver?
+    <select id="id_select_tabuada">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select> <br>
+    Até que número gostaria de construir a sua tabuada? <input type="number" id="input_numero_tabuada"><br>
+    <button onclick="calcularTabuada()">Ver tabuada</button>
+
+</body>
+
+</html>
+<script>
+
+function calcularTabuada(){
+    let base = id_select_tabuada.value;
+    const numero_tabuada = Number(input_numero_tabuada);
+
+    for (let contador = 1 ; contador <= numero_tabuada; contador ++){
+        
+    }
+
+}
+
+</script>
+<!--
+
+a) Pergunte, numa combo, qual a tabuada que o usuário quer ver na tela (2 a 9);
+
+b) Pergunte até que número a tabuada deve ser construída;
+
+c) Ao clicar no botão “Ver Tabuada”, exiba abaixo a tabuada como neste exemplo (considerando que o usuário escolheu a tabuada do 3 e para ir até o 12). -->

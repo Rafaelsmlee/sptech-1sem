@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    <button onclick="showPairs()">S2 Pares</button><br><br>
+    <div id="div_pair_lover"></div>
+
+</body>
+</html>
+<script>
+
+function showPairs(){
+    for(contador = 1 ; contador <= 100 ; contador++){
+        if(contador%2 != 0){
+            div_pair_lover.innerHTML += ` `
+        } else{
+            div_pair_lover.innerHTML += `${contador} <br>` 
+        }
+    }
+}
+
+</script>
+
+<!-- 4. Crie um programa o qual: 
+
+a) Ao clicar num botão "S2 Pares"...
+
+b) Exiba, debaixo do botão, todos os números pares de 0 a 100, um embaixo do outro  -->

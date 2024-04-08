@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 7 </title>
+</head>
+
+<body>
+
+    Digite um número entre 20 a 100 <input type="number" id="input_user_number"><br>
+    <button onclick="five_fanatic()">Adoro múltiplos de 5</button>
+    <div id="div_multiple_five"></div>
+
+</body>
+
+</html>
+<script>
+
+    function five_fanatic(){
+        const user_number = Number(input_user_number.value);
+        if (user_number < 20 || user_number > 100){
+            alert('O número deve ser entre 20 e 100, por favor revise!')
+        } else{
+            for(counter = 0 ; counter <= user_number ; counter += 5 ){
+                div_multiple_five.innerHTML += `${counter} <br>`
+            }
+        }
+
+    }
+
+</script>
+<!-- 7. Crie um programa o qual: 
+
+a) Receba do usuário um número (tem que ser entre 20 e 100) 
+
+b) Ao clicar num botão "Adoro múltiplos de 5"... 
+
+c) Exiba, debaixo do botão, todos os múltiplos de 5 entre 0 e o número informado em a), um embaixo do outro. Ex: 5, 10, 15, 20...  -->

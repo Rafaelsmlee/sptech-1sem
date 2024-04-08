@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+
+    <button onclick="contar()">Contar</button><br>
+    <div id="mostrarNumeros"></div>
+    
+</body>
+</html>
+<script>
+
+function contar(){
+    for (let contador = 1 ; contador <= 15 ; contador++){
+        mostrarNumeros.innerHTML += `${contador} <br>`
+    }
+}
+
+</script>
+<!-- 1. Crie um programa o qual: 
+
+a) Ao clicar num botão "Contar"... 
+
+b) Exiba, debaixo do botão, os números de 1 a 15, um embaixo do outro. -->

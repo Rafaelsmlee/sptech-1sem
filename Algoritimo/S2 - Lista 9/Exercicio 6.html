@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Ex 6</title>
+</head>
+
+<body>
+
+    Qual o nome da pessoa que você mais ama <input type="text" id="input_nome_pessoa_amada"> <br>
+    O quanto você ama essa pessoa? <input type="number" id="input_quantidade_amor" placeholder="Número inteiro"> <br>
+    <button onclick="show_me_the_love()">Expressar amor</button>
+    <div id="div_lot_of_love"></div>
+
+</body>
+
+</html>
+<script>
+
+    function show_me_the_love() {
+        const lover_name = input_nome_pessoa_amada.value;
+        const lover_quantity = Number(input_quantidade_amor).value;
+        
+        for(let counter=1 ; counter <= lover_quantity ; counter++){
+            div_lot_of_love.innerHTML += `${counter} - ${lover_name}, eu te amo! Sempre lembre disso!`
+        }
+
+    }
+
+
+</script>
+<!-- 6. Crie um programa o qual: 
+
+a) Pergunte o nome da pessoa que o usuário mais ama na vida;
+
+b) Pergunte o quanto o usuário a ama (um número inteiro);
+
+c) Ao clicar num botão "Expressar amor", devem aparecer, abaixo dele, N vezes (conforme o valor em b)) a frase indicada em a), como neste exemplo (considerando o nome "Lady Gaga" e que ama "3") 
+
+      1 - Lady Gaga, eu te amo! Sempre lembre disso! 
+
+      2 - Lady Gaga, eu te amo! Sempre lembre disso! 
+
+      3 - Lady Gaga, eu te amo! Sempre lembre disso!  -->
