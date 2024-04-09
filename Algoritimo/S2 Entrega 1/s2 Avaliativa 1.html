@@ -5,53 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco KNAB - O banco que pensa em você</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+
+        .select_operacao {
+            display: flex;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>
-            Seja bem vindo ao banco KNAB
-        </h1>
-
-        <h2>
-            Simulação de Emprestimos e Investimentos
-        </h2>
-
-        <div class="login">
+        <div class="login" id="div_container_login">
+            <h1>
+                Seja bem vindo ao banco KNAB
+            </h1>
+            <br>
+            <h2>
+                Simulação de Emprestimos e Investimentos
+            </h2>
+            <br>
             <div class="dados_conta">
                 <h3>Entre com os dados de sua conta</h3>
             </div>
-            <div class="botoes_login" id="div_container_login">
+            <div class="botoes_login">
                 <input type="number" id="input_conta_cliente" placeholder="Conta">
                 <input type="number" id="input_digito_cliente" placeholder="Digito">
                 <input type="password" id="input_senha_cliente" placeholder="Senha">
-            </div>
+            </div><br><br>
             <div class="botao_simulacao">
                 <button onclick="Simular()">Simulação</button>
             </div>
         </div>
 
-        <div class="investimento" id="div_container_investimento">
+        <div class="investimento" id="div_container_investimento" style="display: none">
+            <h1>
+                O banco KNAB é a sua melhor opção
+            </h1>
+
+            <h2>
+                Empréstimos e Investimentos com as melhores taxas do mercado
+            </h2>
+
+            <h3>
+                Entre com os dados da sua simulação
+            </h3>
             <div class="valor_operacao">
-                <select id="select_selecionarBase">
-                    <option value="operacao">Selecione a operação</option>
-                    <option id="id_emprestimo" value="emprestimo">Emprestimo</option>
-                    <option id="id_investimento" value="investimento">Investimento</option>
-                </select>
+
+                Valor da Operação: <input type="number" id="input_valor_operacao" placeholder="valor">
+
+            </div><br>
+            <div class="select_operacao">
+                <div class="operacao">
+                    <select id="select_selecionarOperacao">
+                        <option value="operacao">Selecione a operação</option>
+                        <option id="id_emprestimo" value="emprestimo">Empréstimo</option>
+                        <option id="id_investimento" value="investimento">Investimento</option>
+                    </select>
+                </div>
+                <div class="botao_selecionar">
+                    <select id="select_selecionarPrazo">
+                        <option id="prazo" value="prazo">Selecione o prazo</option>
+                        <option id="id_curto" value="prazo_curto">Curto</option>
+                        <option id="id_medio" value="prazo_medio">Médio</option>
+                        <option id="id_longo" value="prazo_longo">Longo</option>
+                    </select>
+                </div>
             </div>
-            <div class="botao_selecionar">
-                <select id="select_selecionarBase">
-                    <option value="prazo" value="prazo">Selecione o prazo</option>
-                    <option id="id_curto" value="prazo_curto" >Curto</option>
-                    <option id="id_medio" value="prazo_medio">Médio</option>
-                    <option id="id_longo" value="prazo_longo">Longo</option>
-                </select>
-            </div>
+            <br><br>
             <div class="botao_resultado">
-                <button>Mostrar o Resultado</button>
+                <button onclick="mostrarResultado()">Mostrar o Resultado</button>
             </div>
-            <div id="mostrarResultado">
+
+
+            <div id="respostasDiv">
 
             </div>
         </div>
@@ -82,51 +128,120 @@ Exemplo de senha: "@9090recife"
 Exemplo de senha: "1996@fortaleza"
 -->
 <script>
-    function simular() {
+    function Simular() {
+
 
         const conta_cliente = Number(input_conta_cliente.value);
         const digito_cliente = Number(input_digito_cliente.value);
-        const senha_cliente = Number(input_senha_cliente.value);
-        const divisao_conta = conta_cliente % 10
-        const emprestimo = id_emprestimo.value
-        const investimento = id_investimento.value
-        const curto = id_curto.value
-        const medio = id_medio.value
-    
+        const senha_cliente = input_senha_cliente.value;
 
-        if (conta_cliente != 0) {
-            if (digito_cliente == divisaoconta && senha_cliente.length >= 10 && indexOf('@') || indexOf('#')) {
-                if (digito_cliente < 4 && indexOf('manaus')) {
+        const divisao_conta = conta_cliente % 10;
 
-                } else {
-                    alert("Erro, a sua senha deve conter um número de 0-3 e a palavra 'manaus' ")
-                }
-                if (digito_cliente >= 4 && digito < 8 && indexOf('recife')) {
-                  
-                } else {
-                    alert("Erro, a sua senha deve conter um número de 4-7 e a palavra 'recife' ")
-                }
-                if (digito_cliente >= 9) {
+        const arroba_indice = senha_cliente.indexOf('@');
+        const numberSign_indice = senha_cliente.indexOf('#');
 
-                    div_container_login.style = "none";
-                    div_container_investimento.style = "block";
+        const manaus_indice = senha_cliente.indexOf('manaus');
+        const recife_indice = senha_cliente.indexOf('recife');
+        const fortaleza_indice = senha_cliente.indexOf('fortaleza');
 
-                    if (prazo_curto || prazo_medio){
-                        alert ('Esta operação está condicionada ao seu perfil')
-                        if(operacao){
-                            mostrarResultado.innerHTML += `Simulação ${ } – Para o empréstimo de R$99,99 no PP prazo será cobrado os juros de R$ 99,99 ao ano `
 
+        if (conta_cliente != 0 && digito_cliente == divisao_conta) {
+            if (arroba_indice != -1 || numberSign_indice != -1) {
+                if (senha_cliente.length >= 10) {
+                    if (digito_cliente >= 0 && digito_cliente <= 3) {
+                        if (manaus_indice != -1) {
+                            alert('Senha válida')
+                            div_container_login.style.display = "none";
+                            div_container_investimento.style.display = "block";
+
+                        } else {
+                            alert(' A sua conta precisa da palavra "manaus", pois o dígito está entre 0 a 3. ')
                         }
                     }
-
-                     
-                    } else {
-                    alert("Erro, a sua senha deve conter um número de no mínimo de 9 e a palavra 'fortaleza' ")
+                    else if (digito_cliente >= 4 && digito_cliente <= 7) {
+                        if (recife_indice != -1) {
+                            alert('Senha válida')
+                            div_container_login.style.display = "none";
+                            div_container_investimento.style.display = "block";
+                        } else {
+                            alert(' A sua conta precisa da palavra "recife", pois o dígito está entre 4 a 7. ')
+                        }
+                    }
+                    else if (digito_cliente >= 8) {
+                        if (fortaleza_indice != -1) {
+                            alert('Senha válida')
+                            div_container_login.style.display = "none";
+                            div_container_investimento.style.display = "block";
+                        } else {
+                            alert(' A sua conta precisa da palavra "fortaleza", pois o dígito é maior que 8. ')
+                        }
+                    }
                 }
-
+                else {
+                    alert('Erro! Sua senha precisa ter no mínimo 10 caracteres.')
+                }
             } else {
-                alert('Senha invalida, a senha deve conter no mínimo 10 caracteres e os símbolos "@" ou "#"')
+                alert('Erro! A sua senha precisa ter pelo menos um "@" ou "#".')
             }
+        } else {
+            alert('Conta inválida, a conta precisa ser diferente de zero ou o resto da divisão está incorreta pelos padrões estabelecidos!')
         }
     }
+
+    function mostrarResultado() {
+        const valor_operacao = Number(input_valor_operacao.value);
+        let selecionarOperacao = select_selecionarOperacao.value;
+        let selecionarPrazo = select_selecionarPrazo.value;
+
+
+        const jurosCurtoEmprestimo = 0.24;
+        const jurosMedioEmprestimo = 0.16;
+        const jurosLongoEmprestimo = 0.1;
+
+        const jurosCurtoInvestimento = 0.05;
+        const jurosMedioInvestimento = 0.08;
+        const jurosLongoInvestimento = 0.12;
+
+        let jurosCurtoEmprestimoFinal = valor_operacao * jurosCurtoEmprestimo;
+        let jurosMedioEmprestimoFinal = valor_operacao * jurosMedioEmprestimo;
+        let jurosLongoEmprestimoFinal = valor_operacao * jurosLongoEmprestimo;
+
+        let jurosCurtoInvestimentoFinal = valor_operacao * jurosCurtoInvestimento;
+        let jurosMedioInvestimentoFinal = valor_operacao * jurosMedioInvestimento;
+        let jurosLongoInvestimentoFinal = valor_operacao * jurosLongoInvestimento;
+
+        let contador = 0
+
+        if (selecionarPrazo == 'Médio' || selecionarPrazo == 'Curto') {
+            alert('Esta operação está condicionada ao seu perfil!')
+        }
+
+        if (selecionarOperacao == 'empréstimo') {
+            if (selecionarPrazo == 'curto') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosCurtoEmprestimoFinal} ao ano <br>`
+            }
+            else if (selecionarPrazo == 'medio') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosMedioEmprestimoFinal} ao ano <br>`
+            }
+            else if (selecionarPrazo == 'longo') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosLongoEmprestimoFinal} ao ano <br>`
+            }
+        }
+        if (selecionarOperacao == 'investimento') {
+            if (selecionarPrazo == 'curto') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosCurtoInvestimentoFinal} ao ano <br>`
+            }
+            else if (selecionarPrazo == 'medio') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosMedioInvestimentoFinal} ao ano <br>`
+            }
+            else if (selecionarPrazo == 'longo') {
+                respostasDiv.innerHTML += `Simulação ${contador} - Para o empréstimo de R${valor_operacao} no ${selecionarPrazo} prazo será cobrado os juros de  R$${jurosLongoInvestimentoFinal} ao ano <br>`
+            }
+
+
+        }
+        contador += 1
+    }
+
+
 </script>

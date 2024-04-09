@@ -1,6 +1,14 @@
-body{
-    background-color: white;
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
+    ul, ol, li {
+        list-style: none;
+    }
+
 
 .login{
     display: flex;
@@ -8,6 +16,7 @@ body{
     justify-content: space-evenly;
 }
 
-.investimento{
-    display:block;
+
+.select_operacao{
+    display: flex;
 }
