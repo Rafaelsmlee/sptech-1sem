@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 13</title>
+</head>
+
+<body>
+
+    De quantos em quantos dias você faz musculação? <input type="number" id="input_user_days_gym"><br>
+    <button onclick="show_time()">Exibir</button>
+    <div id="div_routine"></div>
+
+</body>
+
+</html>
+<script>
+
+    function show_time() {
+
+        const gym_days = Number(input_user_days_gym.value);
+
+        for (let days = 1; days >= 30; days++) {
+
+
+            if (day == 1) {
+                div_routine.innerHTML += `Dia ${days} - Musculação`
+            } else if (day + gym_days) {
+                div_routine.innerHTML += `Dia ${days} - Musculação`
+            } else { div_routine.innerHTML += `Dia ${days} - Comer, dormir etc ` }
+        }
+    }
+
+
+
+</script>

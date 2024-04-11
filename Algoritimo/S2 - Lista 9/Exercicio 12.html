@@ -21,6 +21,7 @@
     </select> <br>
     Até que número gostaria de construir a sua tabuada? <input type="number" id="input_numero_tabuada"><br>
     <button onclick="calcularTabuada()">Ver tabuada</button>
+    <div id="div_mostrarTabuada"></div>
 
 </body>
 
@@ -28,11 +29,11 @@
 <script>
 
 function calcularTabuada(){
-    let base = id_select_tabuada.value;
-    const numero_tabuada = Number(input_numero_tabuada);
+    const  base_tabuada = id_select_tabuada.value;
+    const numero_tabuada = Number(input_numero_tabuada.value);
 
-    for (let contador = 1 ; contador <= numero_tabuada; contador ++){
-        
+    for (let tabuada = 1 ; tabuada <= numero_tabuada; tabuada ++){
+        div_mostrarTabuada.innerHTML += ` ${base_tabuada} x ${tabuada} = ${base_tabuada * tabuada} <br> `
     }
 
 }
