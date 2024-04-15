@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Insira a quantidade de elefantes
+    <input type="text" id="ipt_elefantes" /> <br />
+    <button onclick="atazanarMedium()">Atazanar Medium</button> <br />
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function atazanarMedium() {
+    div_mensagem.innerHTML = "";
+    const elefantes = ipt_elefantes.value;
+    const mensagem_inicial = "1 elefante incomoda muita gente! <br>";
+    if (elefantes == 1) {
+      div_mensagem.innerHTML += mensagem_inicial;
+    }
+    let incomodam = "incomodam";
+    for (let contador = 2; contador <= elefantes; contador++) {
+      incomodam += ", incomodam";
+      div_mensagem.innerHTML += mensagem_inicial;
+      div_mensagem.innerHTML += `${contador} elefantes ${incomodam} muito mais <br>`;
+    }
+  }
+</script>

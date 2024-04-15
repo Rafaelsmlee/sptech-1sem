@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Insira sua idade
+    <input type="text" id="ipt_idade" onkeyup="verIdade()" />
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function verIdade() {
+    div_mensagem.innerHTML = "";
+    const idade = ipt_idade.value;
+    let mensagem = "Primeira Infância";
+    for (let contador = 0; contador <= idade; contador++) {
+      if (contador > 100) {
+        mensagem = "Matusálem";
+      } else if (contador > 50) {
+        mensagem = "Melhor idade";
+      } else if (contador > 18) {
+        mensagem = "Adulto";
+      } else if (contador > 10) {
+        mensagem = "Adolescência";
+      } else if (contador > 6) {
+        mensagem = "Segunda Infância";
+      } else if (contador > 4) {
+        mensagem = "Pré-escolar";
+      }
+
+      div_mensagem.innerHTML += `${contador} anos (${mensagem})<br>`;
+    }
+  }
+</script>

@@ -130,23 +130,33 @@ order by acomp.nome asc;
  select
  concat (aluno.nome, ' ', aluno.sobrenome) as 'Nome do aluno',
  aluno.telefone,
- concat (rep.nome, ' ', rep.nome) as 'Representante do aluno',
+ concat (rep.nome, ' ', rep.sobrenome) as 'Representante do aluno',
  rep.telefone
  from Aluno
  left join aluno as rep on rep.fk_representante = aluno.RA;
  
- /*
+ select
+ *
+ from Aluno as rep
+ left join aluno on aluno.RA = rep.fk_representante;
+
+ select
+ *
+ from aluno as rep
+ left join Aluno 
+ on rep.fk_representante = aluno.RA;
+
+
  SELECT
     CONCAT(aluno.Nome, ' ', aluno.Sobrenome) AS 'Nome do Aluno',
     aluno.Telefone,
     CONCAT(rep.Nome, ' ', rep.Sobrenome) AS 'Representante do Aluno',
     rep.Telefone AS 'Telefone do Representante'
-FROM
-    Aluno
+FROM     Aluno
 LEFT JOIN (
     SELECT RA, Nome, Sobrenome, Telefone
     FROM Aluno
-) AS rep ON rep.RA = Aluno.fk_representante;*/
+) AS rep ON rep.RA = Aluno.fk_representante;
 
  
  /*
@@ -161,8 +171,8 @@ proj.nome as 'Nome do projeto',
 proj.descricao as 'Descricao do projeto'
 /*concat (rep.nome, ' ', rep.sobrenome) as 'Representante do aluno'*/
 from aluno
-join projeto as proj on aluno.fk_projeto = proj.idProjeto
-order by aluno.RA asc;
+join projeto as proj on aluno.fk_projeto = proj.idProjeto;
+/*order by aluno.RA asc;*/
 /*
 left join aluno as rep on rep.fk_representante = aluno.RA;
 */
