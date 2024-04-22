@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+</head>
+
+<body>
+
+    <h1>Atividade Avaliativa - One Piece</h1>
+
+    Episódio que deseja começar assistindo: <input type="number" id="input_episodio">
+    <br>
+    Quantidade de tempo disponível: <input type="number" id="input_qtdTempo">
+    <br>
+    Unidade de tempo em:
+    <select id="select_unidadeTempo">
+        <option value="invalido">Selecione uma opção</option>
+        <option value="horas">Horas</option>
+        <option value="minutos">Minutos</option>
+    </select>
+    <br>
+    Pular abertura?
+    <select id="select_pularAbertura">
+        <option value="invalido">Selecione uma opção</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+    </select>
+    <br>
+    Pular encerramento?
+    <select id="select_pularEncerramento">
+        <option value="invalido">Selecione uma opção</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+    </select>
+
+    <br>
+
+    <button onclick="calcularEpisodios()">Assistir Episódios</button>
+
+    <div id="mostrarResultado">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function calcularEpisodios() {
+
+        mostrarResultado.innerHTML = ``;
+
+        const episodio = Number(input_episodio.value);
+        const qtdTempo = Number(input_qtdTempo.value);
+        const unidadeTempo = select_unidadeTempo.value;
+        const pularAbertura = select_pularAbertura.value;
+        const pularEncerramento = select_pularEncerramento.value;
+
+        let tempo = qtdTempo;
+
+        if (unidadeTempo == 'horas') {
+
+            tempo = qtdTempo * 60;
+
+        }
+
+        let tempoEp = 24;
+
+        if (pularAbertura == 'sim' && pularEncerramento == 'sim') {
+
+            tempoEp -= 4;
+
+
+
+        } else if (pularAbertura == 'sim' || pularEncerramento == 'sim') {
+
+            tempoEp -= 2;
+
+        }
+
+        let qtdEpisodios = episodio + (tempo / tempoEp);
+
+        if (episodio < 1 || episodio > 1100) {
+
+            alert(`O número do episódio é inválido`);
+
+        } else {
+
+            let tempoTotalEp = 0;
+            let status = ``;
+            let contadorEp = episodio;
+            
+
+            mostrarResultado.innerHTML += `<br><br>Episódio: ${contadorEp}`;
+
+            for (let contadorTempo = 1; contadorTempo <= tempoEp; contadorTempo++) {
+
+                let resetarContador = 0;
+
+                tempoTotalEp++;
+
+                if (pularAbertura == 'nao' && contadorTempo <= 2) {
+
+                    status = `Assistindo a Abertura`;
+
+                } else if (pularEncerramento == 'nao' && contadorTempo > tempoEp - 2) {
+
+                    status = `Assistindo o Encerramento`;
+
+                } else {
+
+                    status = `Assistindo o Episódio`;
+
+                }
+
+                mostrarResultado.innerHTML += `<br>Minuto ${contadorTempo}: ${status}`;
+
+                if (tempoTotalEp >= tempo || contadorEp >= qtdEpisodios) {
+
+                    break;
+
+                } else if (contadorTempo >= tempoEp) {
+
+                    contadorTempo = resetarContador;
+                    resetarContador++;
+
+                    contadorEp++;
+
+                    mostrarResultado.innerHTML += `<br><br>Episódio: ${contadorEp}`;
+
+                }
+
+            }
+
+            mostrarResultado.innerHTML += `<br><br>Fim dos episódios!
+                                           <br>Foram assistidos: ${tempo / tempoEp} episódios`
+
+        }
+
+    }
+
+</script>

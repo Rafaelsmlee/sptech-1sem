@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    button{
+        margin: 20px;
+    }
+ </style>
+<body>
+    <h1>STARBUCKS</h1>
+    <p> informe quantas xícaras de café com leite você já tomou na vida  </p>
+    <input type="number" id="input_qtd_cafe_com_leite"><br>
+
+    <button onclick="MostarcafeLeite()" type="button">Ver a quantidade</button>
+
+    <div id="div_resultado_cafe_leite">
+            <!-- <img style="width: 53px;" src="https://giassi.vtexassets.com/arquivos/ids/644032/Refrigerante-Coca-Cola-Lata-220ml.png?v=638211559157030000" alt=""> -->
+
+    </div>
+</body>
+<script>
+
+    function MostarcafeLeite(){
+        div_resultado_cafe_leite.innerHTML = ``;
+
+
+        let qtd_cafe_leite = Number(input_qtd_cafe_com_leite.value);
+
+            for(let contador = 1; contador <= qtd_cafe_leite; contador += 1){
+                    div_resultado_cafe_leite.innerHTML += `<img style="width: 53px;" src="https://img2.gratispng.com/20180601/shj/kisspng-instant-coffee-spoon-food-scoops-eating-coffee-spoon-5b119504cf4458.708590941527878916849.jpg" alt="">
+                    <img style="width: 53px;" src="https://img2.gratispng.com/20180601/shj/kisspng-instant-coffee-spoon-food-scoops-eating-coffee-spoon-5b119504cf4458.708590941527878916849.jpg" alt="">
+                    <img style="width: 53px;" src="https://minhasaude.proteste.org.br/wp-content/uploads/2023/06/colher-carregando-punhado-de-leite-em-po-sobre-fundo-branco.jpg" alt="">
+                    <br>
+                    ` 
+                }
+                div_resultado_cafe_leite.innerHTML += `<p>Você tomou no total de ${qtd_cafe_leite} café com leite na sua  vida</p>`
+
+        }
+
+    
+   
+</script>
+</html>

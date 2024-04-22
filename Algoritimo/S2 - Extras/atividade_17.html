@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    button{
+        margin: 20px;
+    }
+ </style>
+<body>
+    <h1>CARONAS 2.0</h1>
+    <p> quantas pessoas vão entrar no carro </p>
+    <input type="number" id="input_qtd_pessoas"><br>
+    <p> capacidade de passageiros que o veículo suporta  </p>
+    <input type="number" id="input_qtd_pessoas_maxima"><br>
+
+    <button onclick="PartitCarona()" type="button">#Partiu Carona</button>
+
+    <div id="div_passageiro">
+
+    </div>
+</body>
+<script>
+
+    function PartitCarona(){
+
+        let qtd_pessoas = Number(input_qtd_pessoas.value);
+        let qtd_pessoas_max = Number(input_qtd_pessoas_maxima.value);
+
+            for(let contador = 1; contador <= qtd_pessoas; contador += 1){
+                if(contador == 1){
+                    div_passageiro.innerHTML += `Entrou o ${contador}º passageiro(que é o(a) motorista<br>`; 
+                }
+                 else if(contador  <= qtd_pessoas_max){
+                    div_passageiro.innerHTML += `Entrou o ${contador}º passageiro<br>`; 
+                } else{
+                     div_passageiro.innerHTML += `O ${contador}º passageiro terá que esperar<br>`;
+
+                }
+        }
+
+    }
+   
+</script>
+</html>

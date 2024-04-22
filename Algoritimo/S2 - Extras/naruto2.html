@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 1</title>
+</head>
+
+<body>
+    Episídio que deseja começar assistindo:<input type="number" id="ipt_comeco_serie"
+        placeholder="Número entre 1 a 1100"><br>
+    Quantidade de tempo disponível: <input type="number" id="ipt_tempo_usuario"><br>
+    Unidade de tempo em:
+    <select name="unidade_tempo" id="select_unidade_tempo">
+        <option value="void">Selecione uma opção</option>
+        <option value="minutos">Minutos</option>
+        <option value="horas">Horas</option>
+    </select><br>
+    Pular abertura?
+    <select name="pular_abertura" id="select_pular_open">
+        <option value="void">Selecione uma opção</option>
+        <option value="Sim">Sim</option>
+        <option value="Nao">Não</option>
+    </select><br>
+    Pular encerramento?
+    <select name="pular_encerramento" id="select_pular_end">
+        <option value="void">Selecione uma opção</option>
+        <option value="Sim">Sim</option>
+        <option value="Nao">Não</option>
+    </select><br>
+    <button onclick="assistirEpisodio()">Assistir Episódios</button><br>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+<script>
+	function vaiPrograma () {
+	
+		const tempoEpi = 24;
+		
+		if op = true{
+		tempoEpi = tempoEpi - 2
+		}		
+		
+		if ed = true{
+		tempoEpi = tempoEpi - 2
+		}
+			
+		
+		if unidade_tempo == 'horas'{
+		qntd_tempo = qntd_tempo * 60
+		}
+	
+		function assistirEpisodio(ipt_comeco_serie.value, qntd_tempo, select_pular_open.value, select_pular_end.value, tempoEpi)
+	
+		pMsg = `Episodios assistidos: <br> ` qtde_tempo / tempo_epi
+	}
+	
+    function assistirEpisodio(int ep, int tempo_disp, bool op, bool ed, tempo_ep int) {
+
+		if (temp_disp = 0) {
+		alert = `Fim dos episódios <br> ` // precisa sair do programa nao sei como 
+		}
+
+		if (ep > 1100 || ep < 1) {
+            alert('O número do episódio é inválido') // se o alert sair do programa nao precisa de else
+        } 
+        
+		opMsg = `Episódio ${ep} <br> `
+		
+		for (let t = 1; t <= tempo_ep; t++) {
+		
+		if (t <= 2 && op = true) {
+        div_mensagem.innerHTML += `Minuto ${tempoX} Assistindo Abertura <br> `
+        }        
+		else if ((t >= 22 && ed = true) or (t > = 20 & ed = true && op = false)) {
+        div_mensagem.innerHTML += `Minuto ${tempoX}: Assistindo Encerramento <br> `
+		}		
+        else {
+        div_mensagem.innerHTML += `Minuto ${tempoX}: Assistindo o Episódio <br> `
+        }
+
+		if (t = tempo_ep){ //prox ep
+		ep = ep++
+		temp_disp = temp_disp - tempo_ep
+		function assistirEpisodio(ep, temp_disp, op, ed, tempo_ep)
+		}
+    }
+
+
+
+</script>

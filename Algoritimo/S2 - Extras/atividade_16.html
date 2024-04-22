@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+ <style>
+    button{
+        margin: 20px;
+    }
+ </style>
+<body>
+    <h1>coca-cola</h1>
+    <p> quantas "Coca-Cola" ele acha que já bebeu na vida </p>
+    <input type="number" id="input_qtd_pessoas"><br>
+
+    <button onclick="PartitCarona()" type="button" class="btn btn-dark">#Partiu Carona</button>
+
+    <div id="div_passageiro">
+
+    </div>
+</body>
+<script>
+
+    function PartitCarona(){
+
+        let qtd_pessoas = Number(input_qtd_pessoas.value);
+            for(let contador = 1; contador <= qtd_pessoas; contador += 1){
+                if(contador == 1){
+                    div_passageiro.innerHTML += `Entrou o ${contador}º passageiro(que é o(a) motorista<br>`; 
+                }
+                 else if(contador  < 6){
+                    div_passageiro.innerHTML += `Entrou o ${contador}º passageiro<br>`; 
+                } else{
+                    div_passageiro.innerHTML += `O ${contador}º passageiro terá que esperar<br>`;
+
+                }
+        }
+
+    }
+   
+</script>
+</html>

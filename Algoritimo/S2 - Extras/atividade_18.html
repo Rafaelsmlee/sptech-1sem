@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    button{
+        margin: 20px;
+    }
+ </style>
+<body>
+    <h1>COCA-COLA</h1>
+    <p> quantas coca-colas você acha que bebeu na vida </p>
+    <input type="number" id="input_qtd_cocas"><br>
+
+    <button onclick="MostartCocas()" type="button">Ver a quantidade</button>
+
+    <div id="div_resultado_coca">
+            <!-- <img style="width: 53px;" src="https://giassi.vtexassets.com/arquivos/ids/644032/Refrigerante-Coca-Cola-Lata-220ml.png?v=638211559157030000" alt=""> -->
+
+    </div>
+</body>
+<script>
+
+    function MostartCocas(){
+        div_resultado_coca.innerHTML = ``;
+
+
+        let qtd_cocas = Number(input_qtd_cocas.value);
+
+            for(let contador = 1; contador <= qtd_cocas; contador += 1){
+                    div_resultado_coca.innerHTML += `<img style="width: 53px;" src="https://giassi.vtexassets.com/arquivos/ids/644032/Refrigerante-Coca-Cola-Lata-220ml.png?v=638211559157030000" alt="">`; 
+                }
+        }
+
+    
+   
+</script>
+</html>
