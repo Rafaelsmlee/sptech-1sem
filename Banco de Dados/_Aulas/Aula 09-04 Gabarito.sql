@@ -1,6 +1,6 @@
-create database if not exists sprint2;
+create database if not exists sprint3;
 
-use sprint2;
+use sprint3;
 
 create table cliente(
 id  int not null auto_increment,
@@ -139,3 +139,63 @@ select * from pedido;
     
 INSERT INTO pedido_item (fkpedido, fkproduto, quantidade, valor_unitario) VALUES
 		(1006, 11, 20, null); 
+        
+        
+create table empresa
+(id INT auto_increment,
+nome VARCHAR(45),
+cnpj VARCHAR(45),
+situacao CHAR(1),
+fkEmpresa INT,
+
+primary key(id),
+constraint chck_fkEmpresa foreign key (fkEmpresa) references Empresa(id),
+check (situacao in('A', 'I'))
+);
+
+insert into Empresa
+(nome, cnpj, situacao, fkEmpresa)
+values  ('Magazine Luizão', '04.690.126/0001-96', 'A', null),
+		('Pallet Pokebolas', '04.690.126/0001-96', 'A', 1);
+        
+select * from Empresa;
+
+alter table pedido_item drop foreign key pedido_item_ibfk_1,
+						drop foreign key pedido_item_ibfk_2;
+
+alter table pedido_item drop primary key;
+
+alter table pedido drop foreign key pedido_ibfk_1;
+
+alter table pedido modify id int not null;
+
+alter table pedido drop primary key;
+
+alter table pedido
+rename column id to numeroPedido;
+
+select * from pedido;
+
+alter table pedido
+add column fkempresa INT;
+
+update pedido set fkempresa = 1;
+
+alter table pedido
+add constraint chck_pedido_fkempresa foreign key (fkempresa) references Empresa(id);
+
+
+alter table pedido
+add primary key (numeroPedido, fkempresa);
+
+select *
+from pedido as ped
+join empresa as emp on ped.fkempresa = emp.id;
+
+alter table pedido_item
+drop primary key;
+
+explain pedido_item;
+
+alter table pedido_item
+rename column fkproduto to produto_id;
