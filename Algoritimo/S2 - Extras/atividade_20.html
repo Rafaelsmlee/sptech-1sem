@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    button{
+        margin: 20px;
+    }
+ </style>
+<body>
+    <h1>BANK</h1>
+    <p> Quantidade de deposito </p>
+    <input type="number" id="input_depositado"><br>
+    <p> dinheiro a ser depositado </p>
+    <input type="number" id="input_dinheiro_depositado"><br>
+
+    <button onclick="deposito()" type="button">Ver a quantidade</button>
+
+    <div id="div_resultado_coca">
+            <!-- <img style="width: 53px;" src="https://giassi.vtexassets.com/arquivos/ids/644032/Refrigerante-Coca-Cola-Lata-220ml.png?v=638211559157030000" alt=""> -->
+
+    </div>
+</body>
+<script>
+
+    function deposito(){
+
+
+        let mes = Number(input_depositado.value);
+        let dinheiro = Number(input_dinheiro_depositado.value);
+
+
+            for(let contador = 1; contador <= mes; contador += 1){
+                    div_resultado_coca.innerHTML += `<p> ${contador}º  Mês: R$${contador * dinheiro}</p>`; 
+                }
+        }
+
+    
+   
+</script>
+</html>

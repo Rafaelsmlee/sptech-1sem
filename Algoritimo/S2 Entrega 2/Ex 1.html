@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 1</title>
+</head>
+
+<body>
+    Episídio que deseja começar assistindo:<input type="number" id="ipt_episodio"
+        placeholder="Número entre 1 a 1100"><br>
+    Quantidade de tempo disponível: <input type="number" id="ipt_tempo_usuario"><br>
+    Unidade de tempo em:
+    <select name="unidade_tempo" id="select_unidade_tempo">
+        <option value="void">Selecione uma opção</option>
+        <option value="minutos">Minutos</option>
+        <option value="horas">Horas</option>
+    </select><br>
+    Pular abertura?
+    <select name="pular_abertura" id="select_pular_open">
+        <option value="void">Selecione uma opção</option>
+        <option value="Sim">Sim</option>
+        <option value="Nao">Não</option>
+    </select><br>
+    Pular encerramento?
+    <select name="pular_encerramento" id="select_pular_end">
+        <option value="void">Selecione uma opção</option>
+        <option value="Sim">Sim</option>
+        <option value="Nao">Não</option>
+    </select><br>
+    <button onclick="assistirEpisodio()">Assistir Episódios</button>
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+<script>
+
+    function assistirEpisodio() {
+        div_mensagem.innerHTML = ` `;
+        const episodio = Number(ipt_episodio.value);
+        const qntd_tempo = Number(ipt_tempo_usuario.value);
+        const unidade_tempo = select_unidade_tempo.value;
+        const opening = select_pular_open.value;
+        const ending = select_pular_end.value;
+
+
+        let tempo = qntd_tempo
+
+        if (unidade_tempo == 'horas') {
+            tempo = qntd_tempo * 60
+        }
+        // ||
+
+        let tempoEp = 24;
+
+        if (opening == 'Sim' && ending == 'Sim') {
+            tempoEp -= 4;
+        } else if
+            (opening == 'Sim' || ending == 'Sim') {
+            tempoEp -= 2
+        }
+
+
+        let qtdEpisodio = episodio + (tempo / tempoEp);
+
+        if (episodio < 1 || episodio > 1000) {
+            alert('O número do episódio é inválido')
+        } else {
+
+            let tempoTotalEp = 0;
+            let status = ``;
+            let contadorEp = episodio;
+
+            div_mensagem.innerHTML += `<br><br>Episodio ${contadorEp}`
+
+
+            for (let contadorTempo = 1; contadorTempo <= tempoEp; contadorTempo++) {
+
+                    let resetarContador = 0;
+
+                    tempoTotalEp++;
+                    
+                if (opening == 'Nao' && contadorTempo <= 2) {
+                    status = `Assistindo a abertura`
+                }
+                else if(ending == 'Nao' && contadorTempo > tempoEp -2) {
+                    status = `Assistindo o Encerramento`
+                } else{
+                    status = `Assistindo o Episodio`;
+                }
+
+                div_mensagem.innerHTML += `<br> Minuto ${contadorTempo}: ${status}`;
+
+                if (tempoTotalEp >= tempo || contadorEp >= qtdEpisodio) {
+                    break;
+                }
+                else if (contadorTempo >= tempoEp) {
+                    contadorTempo = resetarContador;
+                    resetarContador++;
+
+                    contadorEp++;
+
+                    div_mensagem.innerHTML += `<br><br> Episódio ${contadorEp}`;
+                }
+
+            }
+            div_mensagem.innerHTML += `<br><br>Fim dos episódios!
+                                           <br>Foram assistidos: ${tempo / tempoEp} episódios`
+        }
+    }
+
+
+</script>
+
+
+<!-- div_mensagem.innerHTML += `Episódio ${episodio} <br> `
+
+if (tempo_x > 22) {
+    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo Encerramento `
+}
+if (tempo > 2 && tempo <= 22) {
+    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo o Episódio `
+} else {
+    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo Abertura `
+} -->

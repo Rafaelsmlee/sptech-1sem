@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco KNAB</title>
+</head>
+
+<body>
+
+    <div id="div_login">
+
+        <h1>Seja bem vindo ao Banco KNAB</h1>
+
+        <br><br>
+
+        <h3>Simulação de Emprestimos e Investimentos</h3>
+
+        <br><br>
+
+        <b>Entre com os dados de sua conta:</b>
+
+        <br><br>
+
+        <input type="text" id="input_conta" placeholder="Conta">
+        <input type="text" id="input_digito" placeholder="Dígito">
+        <input type="password" id="input_senha" placeholder="Senha">
+
+        <br><br>
+
+        <button onclick="simular()">Simular</button>
+
+    </div>
+
+    <div id="div_simuladorPai" style="display: none;">
+
+        
+        <h1>O Banco KNAB é a sua melhor opção</h1>
+        
+        <h3>Emprestimos e Investimentos com as melhore taxas do mercado</h3>
+        
+        <b>Entre com os dados da sua simulação</b>
+        
+        <br><br><br>
+        
+        <div id="div_simulador">
+
+            Valor da Operação: <input type="text" id="input_valorOperacao" placeholder="valor">
+
+            <br><br>
+
+            <select id="select_operacao">
+                <option value="invalido">Selecione a Operação...</option>
+                <option value="emprestimo">Empréstimo</option>
+                <option value="investimento">Investimento</option>
+            </select>
+
+            <select id="select_prazo">
+                <option value="invalido">Selecione a Prazo...</option>
+                <option value="curto">Curto</option>
+                <option value="medio">Médio</option>
+                <option value="longo">Longo</option>
+            </select>
+        
+        </div>
+
+            <br>
+
+            <button onclick="mostrarResultado()">Mostrar o Resultado</button>
+            <button onclick="voltarSimulacao()" id="botaoVoltar" style="display: none;">Voltar à simulação</button>
+
+
+        <div id="div_mostrarResultado">
+
+        </div>
+        
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let quantidadeSimulacao = 0;
+
+    function simular() {
+
+        const conta = Number(input_conta.value);
+        const digito = Number(input_digito.value);
+        const senha = input_senha.value;
+
+        let verificarConta = conta != 0;
+        let verificarDigito = conta % 10;
+
+        let palavraSenha = '';
+
+        if (verificarConta && digito == verificarDigito) {
+
+            if (digito >= 0 && digito <= 3) {
+
+                palavraSenha = 'manaus'
+
+            } else if (digito >= 4 && digito <= 7) {
+
+                palavraSenha = 'recife'
+
+            } else {
+
+                palavraSenha = 'fortaleza'
+
+            }
+
+            let verificarCaracter = senha.indexOf('#') > -1 || senha.indexOf('@') > -1;
+
+            let verificarNumero = senha.indexOf(0) > -1 || senha.indexOf(1) > -1 || senha.indexOf(2) > -1 || senha.indexOf(3) > -1 || senha.indexOf(4) > -1 || senha.indexOf(5) > -1 || senha.indexOf(6) > -1 || senha.indexOf(7) > -1 || senha.indexOf(8) > -1 || senha.indexOf(9) > -1;
+
+            if (senha.indexOf(palavraSenha) >= 0 && verificarCaracter && verificarNumero && senha.length >= 10) {
+
+                div_simuladorPai.style.display='block';
+                div_login.style.display='none';
+
+            } else {
+
+                alert('Senha incorreta!');
+
+            }
+
+        } else {
+
+            alert('Conta ou digito incorretos!');
+
+        }
+
+    }
+
+    function mostrarResultado() {
+
+        quantidadeSimulacao ++;
+
+        const valorOperacao = Number(input_valorOperacao.value);
+        const operacao = select_operacao.value;
+        const prazo = select_prazo.value;
+
+        let taxaBaixa = 0.05;
+        let taxaMedia = 0.08;
+        let taxaAlta = 0.12;
+
+        let juros = 0;
+
+        if (operacao == 'emprestimo') {
+
+            if (prazo == 'curto') {
+
+                alert(`Esta operação está condicionada ao seu perfil`);
+
+                juros = valorOperacao * (taxaAlta * 2);
+
+            } else if (prazo == 'medio') {
+
+                alert(`Esta operação está condicionada ao seu perfil`);
+
+                juros = valorOperacao * (taxaMedia * 2);
+
+            } else if (prazo == 'longo') {
+
+                juros = valorOperacao * (taxaBaixa * 2);
+
+            }
+
+            div_mostrarResultado.innerHTML += `<br>Simulação ${quantidadeSimulacao} – Para o empréstimo de R$${valorOperacao} no ${prazo} prazo será cobrado os juros de R$${juros} ao ano`
+
+
+        } else if (operacao == 'investimento') {
+
+            if (prazo == 'curto') {
+
+                alert(`Esta operação está condicionada ao seu perfil`);
+
+                juros = valorOperacao * (taxaBaixa);
+
+            } else if (prazo == 'medio') {
+
+                alert(`Esta operação está condicionada ao seu perfil`);
+
+                juros = valorOperacao * (taxaMedia);
+
+            } else if (prazo == 'longo') {
+
+                juros = valorOperacao * (taxaAlta);
+
+            }
+
+            div_mostrarResultado.innerHTML += `<br>Simulação ${quantidadeSimulacao} – Investindo R$${valorOperacao} no ${prazo} prazo o seu rendimento será de R$${juros} ao ano`
+
+        }
+
+        botaoVoltar.style.display = 'block';
+
+    }
+
+    function voltarSimulacao() {
+
+        botaoVoltar.style.display = 'none';
+
+        // Nessa última parte era melhor só fazer:
+
+        // input_valorOperacao.value = ``;
+        // select_operacao.value = `invalido`;
+        // select_prazo.value = `invalido`;
+
+        // Que ele ia substituir o valor do inputs e dos selects, fiz esse role todo aqui pq eu tava no desespero achando que só ia valer até 16:30 kkkk
+
+        div_simulador.innerHTML = `Valor da Operação: <input type="text" id="input_valorOperacao" placeholder="valor">
+
+<br><br>
+
+<select id="select_operacao">
+    <option value="invalido">Selecione a Operação...</option>
+    <option value="emprestimo">Empréstimo</option>
+    <option value="investimento">Investimento</option>
+</select>
+
+<select id="select_prazo">
+    <option value="invalido">Selecione a Prazo...</option>
+    <option value="curto">Curto</option>
+    <option value="medio">Médio</option>
+    <option value="longo">Longo</option>
+</select>`;
+
+    }
+
+</script>
