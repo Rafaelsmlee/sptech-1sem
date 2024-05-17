@@ -65,7 +65,7 @@
 
         let qtdEpisodio = episodio + (tempo / tempoEp);
 
-        if (episodio < 1 || episodio > 1000) {
+        if (episodio < 1 || episodio > 1100) {
             alert('O número do episódio é inválido')
         } else {
 
@@ -98,7 +98,7 @@
                 }
                 else if (contadorTempo >= tempoEp) {
                     contadorTempo = resetarContador;
-                    resetarContador++;
+                    // resetarContador++;
 
                     contadorEp++;
 
@@ -113,15 +113,3 @@
 
 
 </script>
-
-
-<!-- div_mensagem.innerHTML += `Episódio ${episodio} <br> `
-
-if (tempo_x > 22) {
-    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo Encerramento `
-}
-if (tempo > 2 && tempo <= 22) {
-    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo o Episódio `
-} else {
-    div_mensagem.innerHTML += `Minuto ${tempo}: Assistindo Abertura `
-} -->
