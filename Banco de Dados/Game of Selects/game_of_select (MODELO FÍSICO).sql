@@ -503,31 +503,59 @@ where nome = 'Monkey D. Luffy';
 /*
 -- Pergunta 1
 Shanks é um dos personagens mais queridos e respeitados da série ao ponto que virou objetivo proteger os seus sonhos.
-Retorne todos os sonhos que envolvem Shanks. 
+Retorne todos os objetivos que envolvem Shanks. 
+*/
+select *
+from objetivo
+where descricao like '%Shanks%';
+
+/*
+-- Pergunta 2:
+ O mundo de One Piece foi criado pelo autor Eiichiro Oda em 1997 no Japão, onde tem uma cultura muito forte de respeito com os mais velhos. 
+ Partes das características do cotidiano da vida do criador da série são passsadas para o mundo dos piratas, uma delas é exatamente esse respeito com os mais velhos.
+ Ordene uma lista dos piratas do mais velho para o mais novo onde a recompensa seja maior que um bilhão de Beli e que também a ordem da lista seja apenas dos piratas que nasceram depois do ano de 
+ criação da série no Japão.
+*/
+select *
+from pirata
+where recompensa > 1000000000 and dtNascimento > '1997-12-31'
+order by dtNascimento asc;
+
+/* Pergunta 3 
+As frutas do diabo do One Piece são um dos principais motivos pela origem dos poderes de vários personagens da série.
+São vários tipos de poderes e o mais interessante que nenhum deles se repete, ou seja um personagem nunca vai poder ter o mesmo poder que o outro
+através das frutas do diabo. 
+As frutas são divididas em vários tipos e muitos tem uma oridem parecida. Diga quais são as frutas que possuem os poderes de manipulação.
+*/
+
+-- Pergunta 4 Mostre todas as frutas que não são do tipo Zoan de qualquer forma possível.
+select *
+from frutaDiabo
+where tipo not like '%Zoan %';
 
 
--- Pergunta 2
-Ordene todos os piratas por ordem de nascimento que possuem uma recompensa maior que 1 000 000 000
+-- Pergunta 5  A altura média de um japonês adulto é de 1.64m, retorne o nome apenas dos Piratas que possuem a leta o no segundo nome e sejam mais baixos que a média dos japoneses ordenado em ordem de mais novo para mais velho.
 
+select nome
+from pirata
+where nome LIKE '% %o%' and altura < '164' 
+order by dtNascimento desc;
 
--- Pergunta 3
-As frutas do diabo são a principal origem dos poderes dos personagens do One Piece, mas há frutas como poderes com elementos parecidos.
-Mostre apenas o nome e o tipo das frutas que concedem poder de fogo ou lava.
-
-
--- Pergunta 4
-Mostre todas as frutas que não são do tipo Zoan.
-
-
--- Pergunta 5
-
-Quais são os piartas que nasceram após 1997 e que não possuem nenhuma recompensa
 
 -- Média
 
--- Pergunta 1
-Mostre os piratas que possuem a menor e a maior recompensa que comeram uma fruta do tipo Zoan Mítica 
+-- Pergunta 1 e 2 - Mostre o nome, recompensa e altura da(o) pirata mais velho e com a maior recompensa que comeu a fruta do tipo Zoan Mítica, convertendo a moeda do One Piece (beli) para reais. 
+-- Utilize a seguinte taxa de conversão 100 beli são aproximadamente  R$3,28.
 
--- Pergunta 2
-Quais o pirata mais alto que possúi como objetvio se tornar o rei dos piratas e qual a sua recompensa?
-
+select p.nome,
+	   round(p.recompensa * 0.0328, 2) as recompensa_em_reais, 
+	   altura
+from pirata p
+join frutaDiabo f on p.fkFruta = f.idFruta
+where f.tipo = 'Zoan Mítica' 
+	and p.recompensa = (
+		select max(p2.recompensa)
+        from pirata p2
+        join frutaDiabo f2 on p2.fkFruta = f2.idFruta
+        where f2.tipo = 'Zoan Mítica'
+);
