@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Liste em ordem os seus filmes prediletos
+    <input type="text" id="input_filmesPrediletosEmOrdem"><br>
+    <button onclick="cadastrarFilmeFavorito()">
+        Cadastrar Filme
+    </button>
+    <button onclick="verFavoritos()">
+        Ver Favoritos
+    </button>
+    <div id="div_resposta">
+
+    </div>
+    <div id="div_resposta2">
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    const listaDeFilmes = []
+    let mensagem = ''
+
+    function cadastrarFilmeFavorito() {
+        const novoFilme = input_filmesPrediletosEmOrdem.value;
+
+        let filmeRepetido = false;
+        for (let posicao = 0;
+            posicao < listaDeFilmes.length;
+            posicao++
+        ) {
+            const filmesCadastrado = listaDeFilmes[posicao];
+            if (filmesCadastrado == novoFilme) {
+                filmeRepetido = true
+                   mensagem = `Pare em nome da lei! Filme repetido não!`
+                
+            }
+        }
+        listaDeFilmes.push(novoFilme);
+        div_resposta.innerHTML = mensagem;
+    }
+    
+    let mensagemFavorito = div_resposta.innerHTML;
+    function verFavoritos() {
+        
+
+         // let contagemFilmes = 0
+        // for (let totalFilmes = 1;
+        //     totalFilmes <= listaDeFilmes.length;
+        //     totalFilmes++
+        // ) {
+        //     contagemFilmes++
+        // }
+
+        let totalFilmes = listaDeFilmes.length
+        
+        mensagemFavorito = `Total de Filmes: ${totalFilmes} <br>
+        ${listaDeFilmes[0]} é o primeiro filme cadastrado e o ${listaDeFilmes[listaDeFilmes.length - 1]} o ultimo`
+        div_resposta.innerHTML = mensagemFavorito;
+    }
+
+</script>

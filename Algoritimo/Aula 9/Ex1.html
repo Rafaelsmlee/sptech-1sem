@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Escreva o nome de uma fruta <input type="text" id="input_pesquisarFruta">
+    <br>
+    <button onclick="pesquisarFruta()">
+        Pesquisar
+    </button>
+    <div id="div_resultado">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    let listaFrutas = ['abacaxi', 'maçã', 'banana', 'pera, morango']
+
+    function pesquisarFruta() {
+
+        let frutaPesquisada = input_pesquisarFruta.value;
+        let frutanaLista = false;
+
+        for (let posicao = 0; posicao < listaFrutas.lenght; posicao++) {
+            const fruta = listaFrutas[posicao]
+
+            if (fruta == frutaPesquisada) {
+                frutanaLista = true;
+            }
+        }
+        
+        let fruta
+
+
+    } 
+</script>
