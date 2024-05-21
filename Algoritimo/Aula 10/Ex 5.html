@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Cadastre seus filmes favoritos em ordem! <input type="text" id="input_filmesFavoritos"> <br>
+    <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+    <br><br>
+    <div id="div_rankFilmes"></div>
+
+</body>
+
+</html>
+
+<script>
+    const listaFilmesFavoritos = [];
+
+function cadastrarFilme() {
+    const filme = input_filmesFavoritos.value;
+
+    listaFilmesFavoritos.push(filme);
+
+    const verificarTerceiroFilme = listaFilmesFavoritos.length < 3;
+
+    if (verificarTerceiroFilme) {
+        div_rankFilmes.innerHTML = `
+            Seu filme favorito: ${listaFilmesFavoritos[0]}
+            <br>
+            Seu 3° filme favorito: Ainda não existe
+            <br>
+            Total de filmes cadastrados: ${listaFilmesFavoritos.length}
+        `;
+    } else {
+        div_rankFilmes.innerHTML = `
+            Seu filme favorito: ${listaFilmesFavoritos[0]}
+            <br>
+            Seu 3° filme favorito: ${listaFilmesFavoritos[2]}
+            <br>
+            Total de filmes cadastrados: ${listaFilmesFavoritos.length}
+        `;
+    }
+}
+
+</script>

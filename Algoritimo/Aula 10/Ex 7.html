@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Informe o nome dos filmes que mais gosta! <input type="text" id="input_cadastrarFilmesFavoritos"><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br>
+    <div id="div_filmes">
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+    const listaFilmes = [];
+
+    function cadastrar() {
+        const filme = input_cadastrarFilmesFavoritos.value;
+
+        listaFilmes.push(filme);
+        exibirFilmesCadastrados();
+    }
+
+    function exibirFilmesCadastrados() {
+        apagarConteudo();
+
+        for (let posicao = 0; posicao < listaFilmes.length; posicao++) {
+            const filme = listaFilmes[posicao];
+            const posicaoPar = posicao % 2 === 0;
+            let cor = '';
+
+            if (posicaoPar) {
+                cor = 'blue';
+            } else {
+                cor = 'red';
+            }
+
+            div_filmes.innerHTML += `<span style='color:${cor}'>${filme}</span><br>`;
+        }
+    }
+
+    function apagarConteudo() {
+        div_filmes.innerHTML = ''; 
+    }
+</script> 

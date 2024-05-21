@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome do produto <input id="input_nomeProduto"><br>
+    Preço de compra <input id="input_precoCompra">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="mostrarRelatorio()">Relatório de estoque</button>
+    <div id="div_relatorio">
+
+    </div>
+</body>
+
+</html>
+<script>
+const listaProdutos = [];
+const listaPrecoProdutos = [];
+
+function cadastrar() {
+    const produto = input_nomeProduto.value;
+    const precoProduto = Number(input_precoCompra.value);
+    listaProdutos.push(produto);
+    listaPrecoProdutos.push(precoProduto);
+}
+
+function mostrarRelatorio() {
+    limparLista();
+
+    for (let i = 0; i < listaProdutos.length; i++) {
+        const precoProduto = listaPrecoProdutos[i];
+        const valorVendaProduto = (precoProduto * 1.25).toFixed(2);
+        div_relatorio.innerHTML += `
+            Total de produtos: ${listaProdutos.length}
+            <br>
+            Produto ${i + 1}: ${listaProdutos[i]}
+            <br>
+            Preço de compra: R$${precoProduto}. Vender por R$${valorVendaProduto}
+            <br><br>
+        `;
+    }
+}
+
+function limparLista() {
+    div_relatorio.innerHTML = '';
+}
+</script>
