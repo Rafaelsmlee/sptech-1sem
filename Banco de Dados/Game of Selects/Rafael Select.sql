@@ -477,8 +477,8 @@ values
 (76, 46);
 
 select * from pirata;
-select * from objetivo;
 select * from frutaDiabo;
+select * from objetivo;
 select * from pirataObjetivo;
 
 -- Qual é o nome e a recompensa do capitão dos Chapéu de Palha?
@@ -528,11 +528,10 @@ através das frutas do diabo.
 As frutas são divididas em vários tipos e muitos tem uma oridem parecida. Diga quais são as frutas que possuem os poderes de manipulação.
 */
 
--- Pergunta 4 Mostre todas as frutas que não são do tipo Zoan de qualquer forma possível.
+-- Pergunta 4 Mostre todas as frutas, menos as que são de alguma ramificação do tipo Zoan, a Zoan pura(original) deverá aparecer.
 select *
 from frutaDiabo
 where tipo not like '%Zoan %';
-
 
 -- Pergunta 5  A altura média de um japonês adulto é de 1.64m, retorne o nome apenas dos Piratas que possuem a leta o no segundo nome e sejam mais baixos que a média dos japoneses ordenado em ordem de mais novo para mais velho.
 
@@ -544,6 +543,17 @@ order by dtNascimento desc;
 
 -- Média
 
+-- Pergunta 1
+-- Mostre todos os piratas que tem o poder de transformar o usuário ou outras massas
+
+select p.nome, p.fkFruta, fd.idFruta, fd.nome, fd.poder 
+from pirata as p
+left join frutaDiabo as fd on p.fkFruta = fd.idFruta
+where fd.poder like '%transformar%';
+
+
+-- Dificil
+
 -- Pergunta 1 e 2 - Mostre o nome, recompensa e altura da(o) pirata mais velho e com a maior recompensa que comeu a fruta do tipo Zoan Mítica, convertendo a moeda do One Piece (beli) para reais. 
 -- Utilize a seguinte taxa de conversão 100 beli são aproximadamente  R$3,28.
 
@@ -552,10 +562,10 @@ select p.nome,
 	   altura
 from pirata p
 join frutaDiabo f on p.fkFruta = f.idFruta
-where f.tipo = 'Zoan Mítica' 
-	and p.recompensa = (
+where f.tipo = 'Zoan Mítica'
+and p.recompensa = (
 		select max(p2.recompensa)
         from pirata p2
         join frutaDiabo f2 on p2.fkFruta = f2.idFruta
         where f2.tipo = 'Zoan Mítica'
-);
+) ;
