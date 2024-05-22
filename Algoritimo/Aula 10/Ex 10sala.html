@@ -21,38 +21,51 @@
 
 <script>
 
-    const listaOnibus = [];
+    const listaOnibus = []; // Se tiver que chamar de novo a lista dentro da lista não vai rolar pq iria resetar
+    // Por isso se cria fora da função
 
     function gravarOnibus() {
-        const onibus = input_addOnibus.value;
-        listaOnibus.push(onibus);
+        const novaLinha = input_addOnibus.value;
+        listaOnibus.push(novaLinha);
+
+        const quantidadeDeVezesOnibus = [];
         limparLista()
-        for (let intervalo = (listaOnibus.length - 1); intervalo >= 0; intervalo--) {
-            div_resultadoOnibus.innerHTML += `${listaOnibus[intervalo]}  <br>`
-        }
+        // for (let intervalo = 0; intervalo < listaOnibus.length; intervalo++) {
+        //     div_resultadoOnibus.innerHTML += `${listaOnibus[intervalo]}  <br>`
+           
+        // }
+
+            for (let intervalo = (listaOnibus.length-1) ; intervalo >=0 ; intervalo--){
+                div_resultadoOnibus.innerHTML += `${listaOnibus[intervalo]}  <br>`
+            }
+
+
     }
 
     function pesquisarOnibus() {
-        const onibus = input_pesquisarOnibus.value;
+        const pesquisarOnibus = input_pesquisarOnibus.value;
         const quantidadeVezesOnibus = [];
 
-        for (let i = 0; i < listaOnibus.length; i++) {
-            if (onibus == listaOnibus[i]) {
-                quantidadeVezesOnibus.push(i + 1);
+        for (let intervalo = 0; intervalo < listaOnibus.length; intervalo++) {
+            if (pesquisarOnibus == listaOnibus[intervalo]) {
+                quantidadeVezesOnibus.push(intervalo + 1);
             }
         }
         limparLista()
-
+      
         if (quantidadeVezesOnibus.length == 0) {
             div_resultadoOnibus.innerHTML += 'Você nunca pegou essa linha';
         } else {
             div_resultadoOnibus.innerHTML += `Você já pegou essa linha ${quantidadeVezesOnibus.length} vezes, nessa ordem: ${quantidadeVezesOnibus}, `;
         }
+      
     }
 
     function limparLista(){
         div_resultadoOnibus.innerHTML = ``
     }
+
+    
 
 
 </script>

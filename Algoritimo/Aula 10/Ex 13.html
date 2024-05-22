@@ -14,9 +14,15 @@
         <option value="option_empate">Empate</option>
         <option value="option_derrota">Derrota</option>
     </select><br>
+    <button onclick="registrarJogo()">Registrar jogo</button><br><br>
+    Indique qual jogo deseja saber o resultado<input type="number" id="input_pesquisarResultado"><br>
+    <button onlclick="pesquisar()">Curioso</button>
 
-    <button onclick="registrarJogo()">Registrar jogo</button><br>
+
     <div id="div_resultadoJogo">
+
+    </div><br>
+    <div id="div_curioso">
 
     </div>
 
@@ -34,16 +40,13 @@
 
     function registrarJogo() {
 
-        const vitoria = option_vitoria.value;
-        const empate = option_empate.value;
-        const derrota = option_derrota.value;
 
 
-        if (resultado === vitoria) {
+        if (resultado.value === 'option_vitoria') {
             tabelaVitoria++
-        } else if (resultado === empate) {
+        } else if (resultado.value === 'option_empate') {
             tabelaEmpate++
-        } else if (resultado === derrota) {
+        } else if (resultado.value === 'option_derrota') {
             tabelaDerrota++
         }
         let pontuacaoTotal = (tabelaDerrota + tabelaEmpate + tabelaVitoria);
@@ -54,8 +57,8 @@
 
     function exibirResultado() {
 
-        const totalPontos = tabelaPontuacao.vitorias * 3 + tabelaPontuacao.empates;
-        const totalJogos = tabelaPontuacao.vitorias + tabelaPontuacao.empates + tabelaPontuacao.derrotas;
+        const totalPontos = tabelaVitoria * 3 + tabelaEmpate;
+        const totalJogos = tabelaVitoria + tabelaEmpate + tabelaDerrota;
         const aproveitamento = (totalPontos / (totalJogos * 3)) * 100;
 
         div_resultadoJogo.innerHTML = `O time teve: ${tabelaVitoria} vitórias, ${tabelaEmpate} empates, ${tabelaDerrota} derrotas 
@@ -65,6 +68,29 @@
         Aproveitamento: ${aproveitamento} `
 
     }
+
+    function pesquisar() {
+
+        const jogoPesquisado = Number(input_pesquisarResultado.value);
+        const qualJogo = []
+
+        for (let intervalo = 0; intervalo < tabelaPontuacao.length; intervalo++) {
+            if (jogoPesquisado == tabelaPontuacao[intervalo]) {
+                qualJogo.push(intervalo + 1);
+            }
+        }
+
+        if (qualJogo.length == 0) {
+            div_curioso.innerHTML += `Não foi cadastrado um ${qualJogo}º jogo `;
+        } else {
+            div_curioso.innerHTML += `No ${qualJogo.length} º jogo, o time ${resultado}.`
+        }
+    }
+
+
+
+
+
 
 
 </script>
