@@ -21,26 +21,29 @@
 
 <script>
 
-    const listaOnibus = [];
+const listaOnibus = [];
 
-    function gravarOnibus() {
-        const onibus = input_addOnibus.value;
-        listaOnibus.push(onibus);
-    }
+function gravarOnibus() {
+    const onibus = input_addOnibus.value;
+    listaOnibus.push(onibus);
+}
 
-    function pesquisarOnibus() {
-
-        const onibus = input_pesquisarOnibus.value;
-
-        for (i = 0;
-            i <= listaOnibus.length;
-            i++
-        ) {
-            if (onibus != listaOnibus[])
-                div_resultadoOnibus.innerHTML = `Você nunca pegou essa linha (caso não tenha cadastrado a linha em questão) `
-            
+function pesquisarOnibus() {
+    const onibus = input_pesquisarOnibus.value;
+    const quantidadeDeVezesOnibus = [];
+    
+    for (let i = 0; i < listaOnibus.length; i++) {
+        if (onibus === listaOnibus[i]) {
+            quantidadeDeVezesOnibus.push(i + 1);
         }
     }
+    
+    if (quantidadeDeVezesOnibus.length == 0) {
+        div_resultadoOnibus.innerHTML = 'Você nunca pegou essa linha';
+    } else {
+        div_resultadoOnibus.innerHTML = `Você já pegou essa linha ${quantidadeDeVezesOnibus.length} vezes, nessa ordem: ${quantidadeDeVezesOnibus}, `;
+    }
+}
 
 
 </script>

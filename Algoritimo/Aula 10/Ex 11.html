@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Qual o preço do produto? <input type="number" id="input_precoProduto">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="attEstoque">Atualizar Estoque</button>
+    <br>
+    <div id="div_mostrarEstoque">
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+
+    const listaPrecoProdutos = []
+
+    function cadastrar() {
+
+        const precoProduto = Number(input_precoProduto.value);
+        listaPrecoProdutos.push(precoProduto);
+
+    }
+
+    function attEstoque() {
+
+        let totalEstoque = 0;
+
+        for(let contador = 0; contador < listaPrecoProdutos.length; contador++){
+            totalEstoque =  listaPrecoProdutos[i]
+        }
+
+
+        div_mostrarEstoque.innerHTML = `
+        Você tem ${listaPrecoProdutos.length} produtos cadastrados em estoque 
+
+        Seu estoque vale R$${totalEstoque.toFixed(2)} `
+
+    }
+
+
+
+</script>

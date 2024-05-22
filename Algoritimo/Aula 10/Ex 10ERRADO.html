@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="input_addOnibus"><button onclick="gravarOnibus()">Gravar busão</button><br>
+    <input type="text" id="input_pesquisarOnibus"> <button onclick="pesquisarOnibus()">Pesquisar</button><br>
+    <div id="div_resultadoOnibus">
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    const listaOnibus = [];
+
+    function gravarOnibus() {
+        const onibus = input_addOnibus.value;
+        listaOnibus.push(onibus);
+    }
+
+    function pesquisarOnibus() {
+
+        const onibus = input_pesquisarOnibus.value;
+
+        for (i = 0;
+            i <= listaOnibus.length;
+            i++
+        ) {
+            if (onibus != listaOnibus[i]) {
+                div_resultadoOnibus.innerHTML = `Você nunca pegou essa linha (caso não tenha cadastrado a linha em questão) `
+            } else {
+                div_resultadoOnibus.innerHTML = ` Você já pegou esta linha ${listaOnibus.length} `
+            }
+
+        }
+    }
+
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Qual o nome de um dos seus filhos? <input type="text" id="input_nomeFilho"><br>
+    <button onclick="cadastrarFilho()">Cadastrar</button><button onclick="attFamilia()">Atualizar familia</button>
+    <div id="div_mostrarFamilia">
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+
+    const listaFilhos = [];
+
+    function cadastrarFilho() {
+        const filho = input_nomeFilho.value;
+        listaFilhos.push(filho);
+
+        for (i = 0; i < listaFilhos.length; i++) {
+            if (listaFilho[i] == filho) {
+                alert(`Não pode mais de 1 filho com o mesmo nome!`)
+                return;
+            }
+        }
+    }
+
+    function attFamilia() {
+
+
+        let filhosParticular = (listaFilhos.length * 3000).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        let filhosPublica = (listaFilhos.length * 1500).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        div_mostrarFamilia.innerHTML = `   Você tem ${listaFilhos.length} filhos 
+
+        Seu custo mensal será aproximadamente ${filhosParticular} se colocá-los em escola particular ou ${filhosPublica} se eles estudarem em escola pública `
+    }
+
+
+
+</script>
