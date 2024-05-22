@@ -36,15 +36,14 @@
         limparLista()
 
         for (let i = 1; i <= listaProdutos.length; i++) {
-           
-            const precoProduto = Number(input_precoCompra.value);
-            const valorVendaProduto = (precoProduto + (listaPrecoProdutos * 0.25)).toFixed(2); // Preciso pegar o valor dentro do vetor
+            const precoProduto = listaPrecoProdutos[i];
+               const valorVendaProduto = (precoProduto * 1.25).toFixed(2);
             div_relatorio.innerHTML += `
    Total de produtos: ${listaProdutos.length}
    <br>
-   Produto ${i}: ${listaProdutos[1]}
+   Produto ${i}: ${listaProdutos[i]}
    <br>
-   Preço de compra: ${listaPrecoProdutos[1]}. Vender por R$${valorVendaProduto}
+   Preço de compra: ${precoProduto}. Vender por R$${valorVendaProduto}
    <br>
    <br>
    `
