@@ -1,0 +1,68 @@
+array
+
+<!-- const array = [10, 11, 3, 20, 5];
+
+const indexOfThree = array.indexOf(3);
+
+console.log(indexOfThree)//2 
+
+const indexOfElement = array.indexOf(element, fromIndex)
+-->
+
+slice
+<!-- const texto = "Em um livro de história, a Segunda Guerra Mundial vem depois da Primeira Guerra Mundial.";
+const termoBuscado = "Segunda Guerra Mundial";
+const primeiroIndice = texto.indexOf(termoBuscado);
+
+if (primeiroIndice !== -1) {
+  console.log(`O termo "${termoBuscado}" começa no índice ${primeiroIndice}.`);
+} else {
+  console.log(`O termo "${termoBuscado}" não foi encontrado.`);} -->
+
+
+  <!-- let frase = "O dia está ensolarado e quente.";
+  const indiceInicio = frase.indexOf("ensolarado");
+  const comprimentoCorte = "ensolarado".length;
+  
+  if (indiceInicio !== -1) {
+    frase = frase.slice(0, indiceInicio) + "nublado" + frase.slice(indiceInicio + comprimentoCorte);
+    console.log(frase);
+  } else {
+    console.log("A palavra 'ensolarado' não foi encontrada na frase.");
+  } -->
+
+
+  array + slice
+  <!-- let textoCompleto = "Em um livro de história, a Segunda Guerra Mundial vem depois da Primeira Guerra Mundial.";
+  const termo = "Segunda Guerra Mundial";
+  const indice = textoCompleto.indexOf(termo);
+  
+  if (indice !== -1) {
+    textoCompleto = textoCompleto.slice(0, indice) + "a Segunda Guerra" + textoCompleto.slice(indice + termo.length);
+    console.log(textoCompleto);
+  } else {
+    console.log(`O termo "${termo}" não foi encontrado.`);
+  } -->
+
+  <!-- 
+
+     Definindo o array com nomes
+const nomes = ['abacaxi', 'banana', 'laranja', 'maçã'];
+
+ Nome que o usuário está procurando, escrito em maiúsculas
+const nomeProcurado = 'ABACAXI';
+
+ Convertendo o nome procurado para minúsculas
+const nomeProcuradoMinusculo = nomeProcurado.toLowerCase();
+
+ Inicializando uma variável para armazenar o índice encontrado
+let indiceEncontrado = -1;
+
+ Percorrendo o array e comparando os nomes convertidos para minúsculas
+for (let i = 0; i < nomes.length; i++) {
+  if (nomes[i].toLowerCase() === nomeProcuradoMinusculo) {
+    indiceEncontrado = i;
+    break; // Interrompe o laço ao encontrar o nome
+  }
+}
+  -->
