@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro de Jogos</title>
 </head>
-
 <body>
     <select id="resultado">
         <option value="void" disabled selected>Indique o resultado</option>
@@ -15,82 +13,58 @@
         <option value="option_derrota">Derrota</option>
     </select><br>
     <button onclick="registrarJogo()">Registrar jogo</button><br><br>
-    Indique qual jogo deseja saber o resultado<input type="number" id="input_pesquisarResultado"><br>
-    <button onlclick="pesquisar()">Curioso</button>
+    Indique qual jogo deseja saber o resultado<br>
+    <input type="number" id="input_pesquisarResultado"><br>
+    <button onclick="pesquisar()">Curioso</button>
 
+    <div id="div_resultadoJogo"></div><br>
 
-    <div id="div_resultadoJogo">
+    <script>
+        const tabelaPontuacao = [];
+        let tabelaVitoria = 0;
+        let tabelaEmpate = 0;
+        let tabelaDerrota = 0;
 
-    </div><br>
-    <div id="div_curioso">
-
-    </div>
-
-</body>
-
-</html>
-
-<script>
-
-    const tabelaPontuacao = []
-
-    let tabelaVitoria = 0
-    let tabelaEmpate = 0
-    let tabelaDerrota = 0
-
-    function registrarJogo() {
-
-
-
-        if (resultado.value === 'option_vitoria') {
-            tabelaVitoria++
-        } else if (resultado.value === 'option_empate') {
-            tabelaEmpate++
-        } else if (resultado.value === 'option_derrota') {
-            tabelaDerrota++
+        function registrarJogo() {
+            if (resultado.value === 'option_vitoria') {
+                tabelaVitoria++;
+                tabelaPontuacao.push(3);
+            } else if (resultado.value === 'option_empate') {
+                tabelaEmpate++;
+                tabelaPontuacao.push(1);
+            } else if (resultado.value === 'option_derrota') {
+                tabelaDerrota++;
+                tabelaPontuacao.push(0);
+            }
+            exibirResultado();
         }
-        let pontuacaoTotal = (tabelaDerrota + tabelaEmpate + tabelaVitoria);
-        tabelaPontuacao.push(pontuacaoTotal);
 
-        exibirResultado()
-    }
+        function exibirResultado() {
+            const totalPontos = tabelaVitoria * 3 + tabelaEmpate;
+            const totalJogos = tabelaVitoria + tabelaEmpate + tabelaDerrota;
+            const aproveitamento = (totalPontos / (totalJogos * 3)) * 100;
+            div_resultadoJogo.innerHTML = `O time teve: ${tabelaVitoria} vitórias, ${tabelaEmpate} empates, ${tabelaDerrota} derrotas 
+                <br>Pontuação total: ${totalPontos} pontos 
+                <br>Aproveitamento: ${aproveitamento.toFixed(2)}%<br>`;
+        }
 
-    function exibirResultado() {
-
-        const totalPontos = tabelaVitoria * 3 + tabelaEmpate;
-        const totalJogos = tabelaVitoria + tabelaEmpate + tabelaDerrota;
-        const aproveitamento = (totalPontos / (totalJogos * 3)) * 100;
-
-        div_resultadoJogo.innerHTML = `O time teve: ${tabelaVitoria} vitórias, ${tabelaEmpate} empates, ${tabelaDerrota} derrotas 
-        <br>
-        Pontuação total: ${totalPontos} pontos 
-        <br>
-        Aproveitamento: ${aproveitamento} `
-
-    }
-
-    function pesquisar() {
-
-        const jogoPesquisado = Number(input_pesquisarResultado.value);
-        const qualJogo = []
-
-        for (let intervalo = 0; intervalo < tabelaPontuacao.length; intervalo++) {
-            if (jogoPesquisado == tabelaPontuacao[intervalo]) {
-                qualJogo.push(intervalo + 1);
+        function pesquisar() {
+            const jogoPesquisado = Number(input_pesquisarResultado.value);
+            if (jogoPesquisado > 0 && jogoPesquisado <= tabelaPontuacao.length) {
+                const pontosJogo = tabelaPontuacao[jogoPesquisado - 1];
+                let resultadoJogo;
+                if (pontosJogo === 3) {
+                    resultadoJogo = 'vitória';
+                } else if (pontosJogo === 1) {
+                    resultadoJogo = 'empate';
+                } else {
+                    resultadoJogo = 'derrota';
+                }
+                div_resultadoJogo.innerHTML += `No ${jogoPesquisado}º jogo, o time obteve ${pontosJogo} pontos (${resultadoJogo}).<br>`;
+            } else {
+                div_resultadoJogo.innerHTML += `Não foi cadastrado um ${jogoPesquisado}º jogo.<br>`;
             }
         }
-
-        if (qualJogo.length == 0) {
-            div_curioso.innerHTML += `Não foi cadastrado um ${qualJogo}º jogo `;
-        } else {
-            div_curioso.innerHTML += `No ${qualJogo.length} º jogo, o time ${resultado}.`
-        }
-    }
-
-
-
-
-
-
-
-</script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de performance de Alunos - Registro</title>
+</head>
+
+<body>
+    <div id="div_parte1">
+        <h1>Análise de performance de Alunos - Registro</h1>
+
+        Entre com o Nome do aluno:
+        <input type="text" id="input_nomeAluno"><br><br>
+        Entre com a Nota do aluno:
+        <input type="number" id="input_notaAluno"><br><br>
+
+        <button onclick="registrarAluno()">Registrar</button>
+        <button onclick="analisarAluno()">Analisar</button>
+    </div>
+
+    <div id="div_parte2" style="display: none;">
+        <h2>Análise de performance de Alunos - Pesquisa</h2>
+
+        Entre com o intervalo de notas:
+        De:
+        <input type="number" id="input_intervaloDe">
+        Até
+        <input type="number" id="input_intervaloAte"><br><br>
+
+        <button onclick="pesquisar()">Pesquisar</button>
+    </div>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    const listaAlunos = [];
+    const listaNotasAlunos = [];
+
+    function registrarAluno() {
+        const nomeAluno = input_nomeAluno.value;
+        const notaAluno = Number(input_notaAluno.value);
+        limparConteudo()
+
+        if (nomeAluno.trim() == ''
+            || notaAluno < 0
+            || notaAluno > 10) {
+            div_mensagem.innerHTML = `Insira um nome para o aluno, as notas devem estar entre 0 e 10!`
+        } else {
+            listaAlunos.push(nomeAluno);
+            listaNotasAlunos.push(notaAluno);
+            listarInformações()
+        }
+    }
+
+    function listarInformações() {
+        limparConteudo();
+        const nomeAluno = input_nome_aluno.value;
+        const notaAluno = Number(input_nota_aluno.value);
+        let tamanhoListaAlunos = (listaAlunos.length - 1);
+
+        for (
+            let contadorAluno = tamanhoListaAlunos;
+            contadorAluno >= 0;
+            contadorAluno--
+        ) {
+            let alunoAtual = listaAlunos[contadorAluno]
+            let notaAtribuida = listaNotasAlunos[contadorAluno]
+
+            div_mensagem.innerHTML += `<br><br>Nome: ${alunoAtual}, Nota:${notaAtribuida}`
+        }
+    }
+
+    function analisarAluno() {
+        limparConteudo()
+        div_parte1.style.display = 'none';
+        div_parte2.style.display = 'block';
+    }
+
+    function pesquisar() {
+        const intervaloDe = Number(input_intervaloDe.value);
+        const intervaloAte = Number(input_intervaloAte.value);
+        let tamanhoListaAlunos = listaAlunos.length;
+        limparConteudo()
+
+        if (
+            intervaloAte < 0 ||
+            intervaloAte > 10 ||
+            intervaloDe < 0 ||
+            intervaloAte > 10 ||
+            intervaloDe > intervaloAte
+        ) {
+            div_mensagem.innerHTML = `Dados Inválidos! Os intervalos devem estar entre 0 e 10 e o campo "de" tem que ser menor ou igual ao campo "até"`;
+        } else {
+            let maiorNota = 0;
+            let menorNota = Number(listaNotasAlunos[0]);
+            let notasIntervalo = 0;
+            let somaNotas = 0;
+
+            for (let contadorFiltrados = 0;
+                contadorFiltrados < tamanhoListaAlunos;
+                contadorFiltrados++
+            ) {
+                let notaAluno = Number(listaNotasAlunos[contadorFiltrados]);
+                let alunoFiltrado = listaAlunos[contadorFiltrados];
+
+                if (notaAluno >= intervaloDe && notaAluno <= intervaloAte) {
+                    div_mensagem.innerHTML += `O aluno ${alunoFiltrado} ficou com a  nota ${notaAluno}<br><br>`;
+                    notasIntervalo++
+
+                    if (notaAluno > maiorNota) {
+                        maiorNota = notaAluno
+                    }
+                    else if (notaAluno < menorNota) {
+                        menorNota = notaAluno
+                    }
+                    somaNotas += notaAluno;
+                }
+            }
+
+            let mediaNotas = (somaNotas / notasIntervalo);
+
+            div_mensagem.innerHTML += `
+            Total de alunos registrados: ${tamanhoListaAlunos} 
+            <br><br>
+            Total de alunos listado: ${notasIntervalo}
+            <br><br> 
+            Maior Nota: ${maiorNota} 
+            <br><br>
+            Menor Nota: ${menorNota}
+            <br><br> 
+            Média da Nota: ${mediaNotas}
+            <br>`;
+
+        }
+    }
+
+    function limparConteudo() {
+        div_mensagem.innerHTML = ``;
+    }
+</script>
+
+<!-- const array = [10, 11, 3, 20, 5];
+
+const indexOfThree = array.indexOf(3);
+
+console.log(indexOfThree)//2 
+
+const indexOfElement = array.indexOf(element, fromIndex)
+
+
+-->

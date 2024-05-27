@@ -29,15 +29,22 @@
         let frutaPesquisada = input_pesquisarFruta.value;
         let frutanaLista = false;
 
-        for (let posicao = 0; posicao < listaFrutas.lenght; posicao++) {
+        for (let posicao = 0; posicao < listaFrutas.length; posicao++) {
             const fruta = listaFrutas[posicao]
 
             if (fruta == frutaPesquisada) {
                 frutanaLista = true;
+
+            }
+            if (frutanaLista) {
+                div_resultado.innerHTML = ` A fruta ${frutaPesquisada} está na lista`
+            } else {
+
+                div_resultado.innerHTML = `Não existe ${frutaPesquisada} na lista`
             }
         }
-        
-        let fruta
+
+
 
 
     } 

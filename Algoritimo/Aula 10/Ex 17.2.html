@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        color: #C0504D;
+        font-size: larger;
+    }
+
+    input {
+        border: 1px solid #984806;
+    }
+
+    input::placeholder {
+        color: darkgoldenrod;
+        font-weight: bold;
+
+    }
+
+    button {
+        color: #984806;
+        border: 1px solid #984806;
+        font-size: large;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    #div_mensagem {
+        color: black;
+    }
+</style>
+
+<body>
+    <div id="div_parteUm">
+        <h1>Análise de performance de Alunos - Registro</h1><br>
+
+        <span>Entre com o Nome do aluno:</span> <input type="text" id="input_nomeAluno"><br>
+        <br>
+        <span>Entre com a Nota do aluno:</span> <input type="number" id="input_notaAluno"><br>
+        <br>
+        <button onclick="registrarAluno()">Registrar</button> <button onclick="analisar()">Analisar</button>
+    </div>
+    <!--- Divisão 
+        para parte 
+        dois do Ex-->
+    <div id="div_parteDois" style="display:none">
+        <h1>Análise de performance de Alunos - Pesquisa</h1>
+        <br>
+        <span>Entre com o intervalo de notas:</span> <input type="number" id="input_notaMin" placeholder="De"> <input
+            type="number" id="input_notaMax" placeholder="Até"><br>
+        <br>
+        <button onclick="pesquisarPerformance()">Pesquisar</button>
+    </div>
+    <br>
+    <br>
+    <div id="div_mensagem">
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    const ListaNomeAlunos = [];
+    const ListaNotaAlunos = [];
+
+    function registrarAluno() {
+
+        const nomeAluno = input_nomeAluno.value;
+        const notaAluno = input_notaAluno.value;
+
+        limparConteudo()
+
+        let nomeRepetido = false
+        for (let i = 0; i < ListaNomeAlunos.length; i++) {
+
+            const nomeCadastrado = ListaNomeAlunos[i];
+            if (nomeCadastrado == nomeAluno) {
+                nomeRepetido = true
+            }
+        } if (nomeAluno.trim() == '') {
+            div_mensagem.innerHTML = 'Por favor, preencher o campo nome'
+        } else if (notaAluno.trim() == '') {
+            div_mensagem.innerHTML = 'Por favor, preencha o campo nota'
+        } else if (notaAluno < 0 || notaAluno > 10) {
+            div_mensagem.innerHTML = 'Por favor, a nota precisa ser no intervalo de 0 à 10.'
+        } else if (nomeRepetido) {
+            alert('Nome repetido, por favor não cadastrar duas vezes o mesmo aluno')
+        } else {
+            ListaNomeAlunos.push(nomeAluno);
+            ListaNotaAlunos.push(notaAluno);
+        }
+
+    }
+
+
+    function analisar(){
+        div_parteUm.style.display = 'none';
+        div_parteDois.style.display = 'block';
+    }
+
+    function pesquisarPerformance() {
+      
+
+        const notaMin = Number(input_notaMin.value);
+        const notaMax = Number(input_notaMax.value)
+
+        limparConteudo()
+        // Verificar se o conteúdo do input até é de 1 a 10
+        if (notaMin < 0 || notaMin > 10 || notaMax > 11 || notaMax < notaMin) {
+            div_mensagem.innerHTML = `Números inválidos, por favor digite um número valores entre 0 a 10 e respeitando os valores de minimo e máximo`
+        } else {
+
+            let maiorNota = 0;
+            let menorNota = 0;
+            let somaNotas = 0;
+            let intervaloNotas = 0;
+
+
+
+            for (let i = 0; i < ListaNomeAlunos.length; i++) {
+
+                let notaAluno = Number(ListaNotaAlunos[i]);
+                let nomeAluno = ListaNomeAlunos[i];
+
+                if (notaAluno >= notaMin && notaAluno <= notaMax) {
+                    div_mensagem.innerHTML += `
+        O aluno ${nomeAluno} ficou com a nota ${notaAluno} 
+        <br>
+        <br>`
+                    intervaloNotas++
+
+                    if (notaAluno > maiorNota) {
+                        maiorNota = notaAluno
+                    } else if (notaAluno < menorNota) {
+                        menorNota = notaAluno
+                    }
+                    somaNotas += notaAluno
+                }
+
+
+            }
+
+            let qntdAlunos = ListaNomeAlunos.length;
+            let mediaNota = somaNotas / intervaloNotas;
+            div_mensagem.innerHTML += `Total de alunos registrados: ${qntdAlunos}
+        <br>
+        <br>
+        Total de alunos listado: ${intervaloNotas} 
+        <br>
+        <br>
+        Maior Nota: ${maiorNota} 
+        <br>
+        <br>
+        Menor Nota: ${menorNota} 
+        <br>
+        <br>
+        Média da Nota: ${(mediaNota).toFixed(2)} `
+        }
+
+    }
+
+    function limparConteudo() {
+        div_mensagem.innerHTML = ``;
+    }
+
+
+
+
+
+</script>

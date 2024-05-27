@@ -41,19 +41,23 @@
             const filmesCadastrado = listaDeFilmes[posicao];
             if (filmesCadastrado == novoFilme) {
                 filmeRepetido = true
-                   mensagem = `Pare em nome da lei! Filme repetido não!`
                 
-            }
-        }
-        listaDeFilmes.push(novoFilme);
-        div_resposta.innerHTML = mensagem;
-    }
-    
-    let mensagemFavorito = div_resposta.innerHTML;
-    function verFavoritos() {
-        
 
-         // let contagemFilmes = 0
+            }
+
+        } if (filmeRepetido === false) {
+            listaDeFilmes.push(novoFilme);
+            div_resposta.innerHTML = mensagem;
+        } else{
+           alert(`Pare em nome da lei! Filme repetido não!`)
+        }
+    }
+
+    let mensagemFavorito = div_resposta.innerHTML = ``;
+    function verFavoritos() {
+
+
+        // let contagemFilmes = 0
         // for (let totalFilmes = 1;
         //     totalFilmes <= listaDeFilmes.length;
         //     totalFilmes++
@@ -62,7 +66,7 @@
         // }
 
         let totalFilmes = listaDeFilmes.length
-        
+
         mensagemFavorito = `Total de Filmes: ${totalFilmes} <br>
         ${listaDeFilmes[0]} é o primeiro filme cadastrado e o ${listaDeFilmes[listaDeFilmes.length - 1]} o ultimo`
         div_resposta.innerHTML = mensagemFavorito;

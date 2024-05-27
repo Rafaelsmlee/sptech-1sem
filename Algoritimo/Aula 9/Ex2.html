@@ -24,7 +24,7 @@
     </button>
     <br>
     <div id="div_TerceiraViagem"></div>
-    <button onclick="UltimaViagem()">
+    <button onclick="ultimaViagem()">
         Última viagem
     </button>
     <br>
@@ -38,26 +38,37 @@
 
     let listaDestinos = [];
 
-    function Adicionar(){
+    function Adicionar() {
         const destinoAdicionado = input_destinoViagem.value;
         listaDestinos.push(destinoAdicionado);
     }
 
-    function PrimeiraViagem(){
-        if(listaDestinos.length == 0){
+    function PrimeiraViagem() {
+        if (listaDestinos.length == 0) {
             div_PrimeiraViagem.innerHTML = `Ainda não viajou`
-        } else{
+        } else {
             div_PrimeiraViagem.innerHTML = listaDestinos[0]
         }
     }
-    function TerceiraViagem(){
-        if(listaDestinos.length == 0
-            
-        ){
+    function TerceiraViagem() {
+
+        if (listaDestinos.length <= 2) {
             div_TerceiraViagem.innerHTML = `Ainda não viajou`
-        } else{
+        } else {
             div_TerceiraViagem.innerHTML = listaDestinos[2]
         }
+    }
+    function ultimaViagem() {
+        limparDiv()
+        if (listaDestinos.length == 0) {
+            div_ultimaViagem.innerHTML= `Ainda não viajou`
+        } else {
+            div_ultimaViagem.innerHTML = `${listaDestinos[listaDestinos.length - 1]}`
+        }
+    }
+
+    function limparDiv() {
+        div_ultimaViagem.innerHTML = ``
     }
 
 

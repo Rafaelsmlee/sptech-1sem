@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Cadestre o nome de seus filmes favoritos!
+    <br>
+    <input type="text" id="input_filmesFavoritos">
+    <button onclick="cadastrarFilmes()">Cadastrar</button>
+    <br>
+    <div id="div_rankFilmes">
+
+
+    </div>
+    <div id="div_corFilmes">
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    const listaFilmes = [];
+
+    function cadastrarFilmes() {
+        const filme = input_filmesFavoritos.value;
+
+
+        let filmesRepetidos = false
+        for (let i = 0; i <= listaFilmes.length; i++) {
+
+            const filmeCadastrado = listaFilmes[i];
+            if (filmeCadastrado == filme) {
+                filmesRepetidos = true
+            }
+
+        } if (filmesRepetidos === false) {
+            listaFilmes.push(filme);
+        } else {
+            alert(`Não pode filmes repetidos!`)
+        }
+
+
+        if (listaFilmes.length < 3) {
+            div_rankFilmes.innerHTML = `
+    
+    Seu filme favorito: ${listaFilmes[0]}
+    <br>
+    Ainda não existe
+    <br>
+    Total de filmes cadastrados ${listaFilmes.length}
+    <br>
+    
+    `
+
+        } else {
+            div_rankFilmes.innerHTML = `
+    
+    Seu filme favorito: ${listaFilmes[0]}
+    <br>
+    Seu terceiro filme favorito ${listaFilmes[2]}
+    <br>
+    Total de filmes cadastrados ${listaFilmes.length}
+    <br>
+    `
+        }
+
+        apagarConteudo() 
+        for (let x = 0; x < listaFilmes.length; x++){
+            const posicaoFilme = listaFilmes[x];
+            const posicaoPar = x % 2 === 0;
+            let cor = '';
+
+            if(posicaoPar){
+                cor = 'blue'
+            } else{
+                cor = 'red';
+            }
+            div_corFilmes.innerHTML += `
+            <br>
+        <span style='color:${cor}'> ${posicaoFilme}</span>`
+        }
+
+    }
+
+    function apagarConteudo() {
+        div_corFilmes.innerHTML = ``;
+    }
+
+
+
+
+</script>

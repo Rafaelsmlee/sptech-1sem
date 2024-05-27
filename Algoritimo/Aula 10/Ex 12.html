@@ -26,11 +26,11 @@
     function cadastrarFilho() {
         const filho = input_nomeFilho.value;
 
-        // Verifica se já existe um filho com o mesmo nome
+        
         for (let i = 0; i < listaFilhos.length; i++) {
             if (listaFilhos[i] === filho) {
-                div_mostrarMensagem.innerHTML = 'Não pode ter mais de 1 filho com o mesmo nome!';
-                break; // Sai do loop para não adicionar o filho repetido
+                alert('Não pode ter mais de 1 filho com o mesmo nome!');
+                 
             }
         }
 

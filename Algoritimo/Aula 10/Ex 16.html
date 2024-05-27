@@ -6,6 +6,39 @@
     <title>Document</title>
 </head>
 <body>
-    
+    Digite um número qualquer: <input id="input_numero">
+    <button onclick="analisarNumero()">Analisar histórico</button>
+    <div id="div_historico"></div>
+
+    <script>
+        const historicoNumeros = [];
+        let maiorNumero = 0;
+        let menorNumero = 0;
+
+        function analisarNumero() {
+            const numero = Number(input_numero.value);
+            historicoNumeros.push(numero);
+
+            if (numero > maiorNumero) {
+                maiorNumero = numero;
+            }
+
+            if (numero < menorNumero) {
+                menorNumero = numero;
+            }
+
+            mostrarHistorico();
+        }
+
+        function mostrarHistorico() {
+            div_historico.innerHTML = '';
+
+            for (let i = 0; i < historicoNumeros.length; i++) {
+                div_historico.innerHTML += `${i + 1}º Número: ${historicoNumeros[i]}<br>`;
+            }
+
+            div_historico.innerHTML += `<br>Maior: ${maiorNumero}<br>Menor: ${menorNumero}`;
+        }
+    </script>
 </body>
 </html>
