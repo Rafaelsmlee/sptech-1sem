@@ -1,0 +1,93 @@
+João, um Arquiteto de Soluções em uma renomada empresa de tecnologia, ficou responsável de projetar a infraestrutura necessária para implementar um sistema de medição de temperatura e umidade em estufas de cultivo de tomates. O objetivo é garantir que as condições ideais de temperatura (X ºC) e umidade (X%) sejam mantidas.
+
+O modelo de arquitetura que João escolheu foi a 
+cliente/servidor
+  por distribuir as tarefas entre os dispositivos que solicitam recursos e os dispositivos que fornecem esses recursos. O escopo do projeto inclui uma base de dados hospedada em um ambiente virtualizado em um provedor de nuvem, bem como a necessidade de hospedar a aplicação web para garantir sua disponibilidade. 
+
+
+
+João definiu o fluxo de dados em etapas sequenciais:
+
+1º 
+captura de dados
+  coletando a temperatura e umidade das estufas de tomates.
+
+2º 
+visualização dos dados
+  em uma interface inicial para análise e fase de desenvolvimento.
+
+3º 
+inserção no banco de dados
+  para armazenamento de forma segura e organizada.
+
+4º 
+armazenamento dos dados
+  que serão mantidos para futuras referências, manipulações e análises.
+
+5º 
+transformação dos dados
+  para criação posterior de gráficos e métricas relevantes.
+
+6º 
+visualização pelo cliente
+  acessando a aplicação web e visualiza os gráficos para tomada de decisões.
+
+
+
+Para implementar esse fluxo, João propôs a distribuição de processos em diferentes máquinas, assim fazendo uma POC (Proof of Concept ou na tradução literal, uma Prova de Conceito), para testar se a solução pensada, funcionará de maneira adequada:
+
+Máquina 1: Encarregada da hospedagem do 
+banco de dados
+  e da aplicação web, nesta etapa, ocorre a 
+transformação de dados
+  e seu armazenamento, o banco de dados será executado na porta 
+3306
+  e aplicação web rodará na porta 
+3333
+ .
+Máquina 2: Responsável pela captura de dados e disponibilização de uma API para 
+inserção no banco de dados
+ .
+Máquina 3: Destinadas ao acesso do cliente através de uma URL, possibilitando a 
+visualização pelo cliente
+  a dashboard com diversos gráficos relacionados ao monitoramento dos tomates.
+
+
+Fazendo as devidas separações de responsabilidades, João, ficou na dúvida se:
+
+A Máquina 1 tem conexão via IP:Porta com a Máquina 2, onde a Máquina 2 envia dados capturados pelo sensor a Máquina 1 - 
+VERDADEIRO
+ 
+A Máquina 3 envia dados diretamente para a Máquina 2 - 
+FALSO
+ 
+A Máquina 2 envia dados diretamente para a Máquina 3 - 
+FALSO
+ 
+A Máquina 3 só consegue visualizar a aplicação web que está hospedada na Máquina 1 - 
+VERDADEIRO
+ 
+
+
+Outro ponto, por João decidir usar a arquitetura em questão, foi suas vantagens:
+
+
+Escalabilidade
+  onde é possível adicionar mais clientes e servidores conforme a demanda aumenta.
+
+Manutenção
+  que podem ser feitas no servidor sem afetar diretamente os clientes, simplificando a gestão do sistema.
+
+Centralização
+  dos dados e recursos, facilitando o controle e a gestão desses recursos.
+
+Porém a escolha dessa modelo de arquitetura, trás desafios, como:
+
+Segurança
+  dos dados transmitidos entre cliente e servidor, bem como a segurança dos servidores contra ataques.
+
+Disponibilidade
+  dos servidores para que os clientes possam acessar os recursos quando necessário.
+
+Complexidade
+  implementação e gestão de um sistema cliente-servidor pode ser complexa, especialmente em sistemas grandes e distribuídos.
